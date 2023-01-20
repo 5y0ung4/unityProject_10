@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CamFollow : MonoBehaviour
 {
-    public Transform target; // ¸ñÇ¥°¡ µÉ Æ®·£½ºÆû ÄÄÆ÷³ÍÆ®
+    public Transform target; // ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +15,7 @@ public class CamFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Ä«¸Þ¶ó À§Ä¡¸¦ ¸ñÇ¥ Æ®·£½ºÆûÀÇ À§Ä¡¿¡ ÀÏÄ¡½ÃÅ°±â
+        // Ä«ï¿½Þ¶ï¿½ ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½Ç¥ Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½Å°ï¿½ï¿½
         transform.position = target.position;
     }
 }

@@ -4,31 +4,32 @@ using UnityEngine;
 
 public class CamRotate : MonoBehaviour
 {
-    public float rotSpeed = 200f; // È¸Àü ¼Óµµ
+    public float rotSpeed = 200f; // ÃˆÂ¸Ã€Ã¼ Â¼Ã“ÂµÂµ
 
-    float mx = 0, my = 0; // È¸Àü °ª
+    float mx = 0, my = 0; // ÃˆÂ¸Ã€Ã¼ Â°Âª
 
     // Start is called before the first frame update
     void Start()
     {
         
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        // ¸¶¿ì½º ÀÔ·Â ¹Ş±â
+        // Â¸Â¶Â¿Ã¬Â½Âº Ã€Ã”Â·Ã‚ Â¹ÃÂ±Ã¢
         float mouse_X = Input.GetAxis("Mouse X");
         float mouse_Y = Input.GetAxis("Mouse Y");
 
-        // È¸Àü°ª º¯¼ö¿¡ ¸¶¿ì½º ÀÔ·Â °ª¸¸Å­ ´©Àû
+        // ÃˆÂ¸Ã€Ã¼Â°Âª ÂºÂ¯Â¼Ã¶Â¿Â¡ Â¸Â¶Â¿Ã¬Â½Âº Ã€Ã”Â·Ã‚ Â°ÂªÂ¸Â¸Ã…Â­ Â´Â©Ã€Ã»
         mx += mouse_X * rotSpeed * Time.deltaTime;
         my += mouse_Y * rotSpeed * Time.deltaTime;
 
-        // ¸¶¿ì½º »óÇÏ ÀÌµ¿ º¯¼ö myÀÇ °ª -90µµ~90µµ·Î Á¦ÇÑ
+        // Â¸Â¶Â¿Ã¬Â½Âº Â»Ã³Ã‡Ã Ã€ÃŒÂµÂ¿ ÂºÂ¯Â¼Ã¶ myÃ€Ã‡ Â°Âª -90ÂµÂµ~90ÂµÂµÂ·Ã ÃÂ¦Ã‡Ã‘
         my = Mathf.Clamp(my, -90f, 90f);
 
-        //¹°Ã¼¸¦ È¸Àü ¹æÇâÀ¸·Î È¸Àü½ÃÅ°±â
+        //Â¹Â°ÃƒÂ¼Â¸Â¦ ÃˆÂ¸Ã€Ã¼ Â¹Ã¦Ã‡Ã¢Ã€Â¸Â·Ã ÃˆÂ¸Ã€Ã¼Â½ÃƒÃ…Â°Â±Ã¢
         transform.eulerAngles = new Vector3(-my, mx, 0);
     }
 }
