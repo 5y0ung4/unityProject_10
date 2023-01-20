@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyZone : MonoBehaviour
+public class S2DestroyZone : MonoBehaviour
 {
     //public bool flag = false;
     //public float destroyDistance = 0f;

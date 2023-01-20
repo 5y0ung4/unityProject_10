@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NoteMove : MonoBehaviour
+public class S2NoteMove : MonoBehaviour
 {
     public float speed = 12f;
 
