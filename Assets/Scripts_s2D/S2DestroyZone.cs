@@ -41,6 +41,9 @@ public class S2DestroyZone : MonoBehaviour
     private void Hit()
     {
         Destroy(GameObject.Find("Note"));
+        //S2NoteMove speed = GameObject.Find("mNote").GetComponent<S2NoteMove>();
+        //speed = 0f;
+        // 속도 0 되는 것으로 수정
     }
 
     //private void Enter()
