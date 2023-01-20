@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour
+public class PlayerMove_s : MonoBehaviour
 {
     public float moveSpeed = 7f; // 이동 속도 변수
 

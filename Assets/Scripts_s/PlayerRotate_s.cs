@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerRotate : MonoBehaviour
+public class PlayerRotate_s : MonoBehaviour
 {
     public float rotSpeed = 200f; // 회전 속도
 
