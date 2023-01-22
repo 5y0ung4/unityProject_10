@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class S2DestroyZone : MonoBehaviour
 {
-    //public bool flag = false;
-    //public float destroyDistance = 0f;
-
-    
+    GameObject note;
 
     // Start is called before the first frame update
     void Start()
@@ -18,46 +15,28 @@ public class S2DestroyZone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if ((Vector2.Distance(GameObject.Find("Note").transform.position, transform.position) >= destroyDistance)
-        //    && Input.GetMouseButtonDown(0))
-        //{
-        //    Hit();
-        //}
+        //note = this.gameObject;
 
-        //    if (flag == true && Input.GetMouseButtonDown(0))
-        //{
-        //    Enter();
-        //    Hit();
-        //}
+        if (S2GameManager.gm.gState != S2GameManager.GameState.Run)
+        {
+            return;
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        //flag = true;
-        if (Input.GetMouseButtonDown(0))
-            Hit();
+        if (this.gameObject.activeSelf == true)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Hit();
+            }
+        }
     }
 
     private void Hit()
     {
-        Destroy(GameObject.Find("Note"));
-        //S2NoteMove speed = GameObject.Find("mNote").GetComponent<S2NoteMove>();
-        //speed = 0f;
-        // 속도 0 되는 것으로 수정
+        this.transform.parent.GetChild(3).gameObject.SetActive(false);
+        this.transform.parent.GetChild(5).gameObject.SetActive(false);
     }
-
-    //private void Enter()
-    //{
-    //    //Vector3 hitDistance = GameObject.Find("Note").transform.position - transform.position;
-
-    //    if (Vector3.Distance(GameObject.Find("Note").transform.position, transform.position)
-    //        <= destroyDistance)
-    //    {
-    //        flag = true;
-    //    }
-    //    else
-    //    {
-    //        flag = false;
-    //    }
-    //}
 }

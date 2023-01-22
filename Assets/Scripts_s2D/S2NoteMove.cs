@@ -18,6 +18,11 @@ public class S2NoteMove : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (S2GameManager.gm.gState != S2GameManager.GameState.Run)
+        {
+            return;
+        }
+
         rbody.velocity = new Vector2(speed, 0);
     }
 

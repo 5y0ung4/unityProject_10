@@ -11,6 +11,8 @@ TagManager:
   - 
   - Water
   - UI
+  - 
+  - 
   - DestroyZone
   - GameBar
   - Note
@@ -35,9 +37,10 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3426114801
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
