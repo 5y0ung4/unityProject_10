@@ -12,10 +12,13 @@ public class S2GameManager : MonoBehaviour
     public GameObject instructionImage;
     public GameObject button;
 
-    GameObject note1;
-    GameObject note2;
-    GameObject note3;
-    GameObject note4;
+    GameObject base1;
+    GameObject base2;
+    GameObject base3;
+    GameObject base4;
+
+    GameObject loading;
+
     //S2Timer totalSeconds;
 
     private void Awake()
@@ -43,8 +46,9 @@ public class S2GameManager : MonoBehaviour
         gState = GameState.Ready;
 
         gameText = gameLabel.GetComponent<Text>();
-        gameText.text = "지하철 역으로 이동 중 . . .";
+        gameText.text = "Loading";
         gameText.color = new Color32(255, 255, 255, 255);
+
 
         readyImage.SetActive(true);
 
@@ -58,10 +62,13 @@ public class S2GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        loading = GameObject.Find("Canvas").transform.GetChild(5).gameObject;
+
         if (gState == GameState.Instruction)
         {
             //StartCoroutine(Instruction());
 
+            loading.SetActive(false);
             instructionImage.SetActive(true);
             readyImage.SetActive(false);
 
@@ -72,17 +79,17 @@ public class S2GameManager : MonoBehaviour
         if (gState == GameState.GameOver)
         {
             gameLabel.SetActive(true);
-            gameText.text = "Game Over";
+            gameText.text = "GameOver";
             gameText.color = new Color32(255, 0, 0, 255);
         }
 
-        note1 = GameObject.Find("GameBar1").transform.GetChild(5).gameObject;
-        note2 = GameObject.Find("GameBar2").transform.GetChild(5).gameObject;
-        note3 = GameObject.Find("GameBar3").transform.GetChild(5).gameObject;
-        note4 = GameObject.Find("GameBar4").transform.GetChild(5).gameObject;
+        base1 = GameObject.Find("GameBar1").transform.GetChild(3).gameObject;
+        base2 = GameObject.Find("GameBar2").transform.GetChild(3).gameObject;
+        base3 = GameObject.Find("GameBar3").transform.GetChild(3).gameObject;
+        base4 = GameObject.Find("GameBar4").transform.GetChild(3).gameObject;
 
-        if ((note1.activeSelf == false) && (note2.activeSelf == false) && (note3.activeSelf == false)
-            && (note4.activeSelf == false) && (gState == GameState.Run))
+        if ((base1.activeSelf == false) && (base2.activeSelf == false) && (base3.activeSelf == false)
+            && (base4.activeSelf == false) && (gState == GameState.Run))
         {
             gState = GameState.Success;
         }
@@ -90,7 +97,7 @@ public class S2GameManager : MonoBehaviour
         if (gState == GameState.Success)
         {
             gameLabel.SetActive(true);
-            gameText.text = "성공";
+            gameText.text = "Success!";
             gameText.color = new Color32(255, 0, 0, 255);
         }
     }

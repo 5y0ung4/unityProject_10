@@ -14,6 +14,11 @@ public class S2NoteDelay : MonoBehaviour
     GameObject base3;
     GameObject base4;
 
+    GameObject close1;
+    GameObject close2;
+    GameObject close3;
+    GameObject close4;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +32,11 @@ public class S2NoteDelay : MonoBehaviour
         base3 = GameObject.Find("GameBar3").transform.GetChild(3).gameObject;
         base4 = GameObject.Find("GameBar4").transform.GetChild(3).gameObject;
 
+        close1 = GameObject.Find("Metro").transform.GetChild(1).gameObject;
+        close2 = GameObject.Find("Metro").transform.GetChild(2).gameObject;
+        close3 = GameObject.Find("Metro").transform.GetChild(3).gameObject;
+        close4 = GameObject.Find("Metro").transform.GetChild(4).gameObject;
+
         note1.SetActive(true);
         note2.SetActive(false);
         note3.SetActive(false);
@@ -38,20 +48,24 @@ public class S2NoteDelay : MonoBehaviour
     {
         if (base1.activeSelf == false)
         {
+            close1.SetActive(false);
             note2.SetActive(true);
         }
         if (base2.activeSelf == false)
         {
+            close2.SetActive(false);
             note2.SetActive(false);
             note3.SetActive(true);
         }
         if (base3.activeSelf == false)
         {
+            close3.SetActive(false);
             note3.SetActive(false);
             note4.SetActive(true);
         }
         if (base4.activeSelf == false)
         {
+            close4.SetActive(false);
             note4.SetActive(false);
         }
     }
