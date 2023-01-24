@@ -20,7 +20,8 @@ public class S2ButtonOnClick : MonoBehaviour
     {
         S2GameManager.gm.instructionImage.SetActive(false);
         S2GameManager.gm.gameLabel.SetActive(false);
-        S2GameManager.gm.button.SetActive(false);
+        //S2GameManager.gm.instructionText.SetActive(false);
+        S2GameManager.gm.playButton.SetActive(false);
 
         S2GameManager.gm.gState = S2GameManager.GameState.Run;
     }
