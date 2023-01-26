@@ -5,23 +5,34 @@ using UnityEngine.UI;
 
 public class PrDialogue1 : MonoBehaviour
 {
-    public Text textUI;
+    public Text labelStartText;
+    public Button ButtonA;
+    public Button ButtonB;
 
-    public void OnClickButtonA()
+
+    //public GameObject ChangeImage_pr;
+    //Image thisImg;
+
+    private void Start()
     {
-        textUI.text = "그래";
+        ButtonA.onClick.AddListener(OnClickButtonA);
+        ButtonB.onClick.AddListener(OnClickButtonB);
 
+        void OnClickButtonA()
+        {
+            
+            labelStartText.text = "그래";
+            //ChangeImage_pr.GetComponent<ChangeImage_pr>().ChangeImage1();
+            
+        }
 
-
-
+        void OnClickButtonB()
+        {
+            
+            labelStartText.text = "허허. 미안하구나.";
+        }
 
     }
 
-
-
-
-    public void OnClickButtonB()
-    {
-        textUI.text = "허허 미안하구나.";
-    }
+   
 }
