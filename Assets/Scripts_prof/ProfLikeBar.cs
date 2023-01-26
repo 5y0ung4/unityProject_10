@@ -19,6 +19,6 @@ public class ProfLikeBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //likedegree.value = (float)likedegree / mxlikedegree;
+        ldslider.value = (float)likedegree / mxlikedegree;
     }
 }
