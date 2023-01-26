@@ -10,10 +10,26 @@ public class TypingEffect1 : MonoBehaviour
     public Text labelStartText;
     public PrDialogue1 prologuedialogue1;
 
+    //void Start()
+    //{
+    //    //if (Input.GetButtonDown("Jumping"))
+    //    //{
+    //    //    StartToGame();
+    //    //}
+    //    //else
+    //    //    return;
+    //}
     IEnumerator Start()
     {
+
+
         prologuedialogue1.gameObject.SetActive(false);
-        
+
+        StartCoroutine(_typing());
+
+
+
+
         StartCoroutine(_typing());
         yield return new WaitForSeconds(2f);
 
