@@ -20,6 +20,12 @@ public class PlayerMove_s : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 게임 상태 제어
+        if(GameManager_s.gm.gs != GameManager_s.GameState.Run)
+        {
+            return;
+        }
+
         // 사용자 입력 받기
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
