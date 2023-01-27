@@ -16,6 +16,12 @@ TagManager:
   - 
   - Water
   - UI
+  - Player
+  - Enemy
+  - DestroyZone
+  - GameBar
+  - Note
+  - Heart
   - background
   - professor
   - 
