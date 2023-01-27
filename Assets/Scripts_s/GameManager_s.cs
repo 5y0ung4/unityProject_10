@@ -26,10 +26,7 @@ public class GameManager_s : MonoBehaviour
     public GameState gs;
 
     public GameObject gameLabel;
-
     Text gameText;
-
-    ChoicePsg_s choice;
 
     // Start is called before the first frame update
     void Start()
@@ -42,8 +39,6 @@ public class GameManager_s : MonoBehaviour
         gameText.color = new Color32(147, 144, 246, 255);
 
         StartCoroutine(ReadyToRun()); // 게임 준비 -> 게임 시작
-
-        choice = GameObject.Find("Player").GetComponent<ChoicePsg_s>(); // chance 사용 위해 해당 컴포넌트 받아오기
     }
 
     IEnumerator ReadyToRun()
@@ -63,45 +58,54 @@ public class GameManager_s : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (choice.chance == 2)
-        {
-            gs = GameState.Fail;
+        
+    }
 
-            gameLabel.SetActive(true); // 게임 라벨 텍스트 활성화
-            gameText.text = "땡!\n\n기회가 2번 남았습니다!";
-            gameText.color = new Color32(235, 83, 158, 255);
+    public IEnumerator try1() // 1번 실패했을 때
+    {
+        gs = GameState.Fail;
 
-            gameLabel.SetActive(false);
-            gs = GameState.Run;
-        }
-        else if (choice.chance == 1)
-        {
-            gs = GameState.Fail;
+        gameLabel.SetActive(true); // 게임 라벨 텍스트 활성화
+        gameText.text = "땡!\n\n기회가 2번 남았습니다!";
+        gameText.color = new Color32(235, 83, 158, 255);
 
-            gameLabel.SetActive(true); // 게임 라벨 텍스트 활성화
-            gameText.text = "땡!\n\n기회가 1번 남았습니다!";
-            gameText.color = new Color32(235, 83, 158, 255);
+        yield return new WaitForSeconds(2f);
 
-            gameLabel.SetActive(false);
-            gs = GameState.Run;
-        }
-        else if (choice.chance == 0)
-        {
-            gameLabel.SetActive(true); // 게임 라벨 텍스트 활성화
-            gameText.color = new Color32(237, 0, 109, 255);
+        gameLabel.SetActive(false); // 비활성화
+        gs = GameState.Run;
+    }
 
-            gameText.text = "Game Over\n\n당신은 서서 가야합니다...";
+    public IEnumerator try2() // 2번 실패했을 때
+    {
+        gs = GameState.Fail;
 
-            gs = GameState.GameOver;
-        }
-        else if (choice.chance == -1)
-        {
-            gameLabel.SetActive(true); // 게임 라벨 텍스트 활성화
-            gameText.color = new Color32(161, 192, 90, 255);
+        gameLabel.SetActive(true); // 게임 라벨 텍스트 활성화
+        gameText.text = "땡!\n\n기회가 1번 남았습니다!";
+        gameText.color = new Color32(235, 83, 158, 255);
 
-            gameText.text = "정답!\n\n앉아서 가기 성공!";
+        yield return new WaitForSeconds(2f);
 
-            gs = GameState.Success;
-        }
+        gameLabel.SetActive(false); // 비활성화
+        gs = GameState.Run;
+    }
+
+    public void gameOver() // 3번 실패 => 게임 오버
+    {
+        gameLabel.SetActive(true); // 게임 라벨 텍스트 활성화
+        gameText.color = new Color32(237, 0, 109, 255);
+
+        gameText.text = "Game Over\n\n당신은 서서 가야합니다...";
+
+        gs = GameState.GameOver;
+    }
+
+    public void gameSuccess() // 게임 성공
+    {
+        gameLabel.SetActive(true); // 게임 라벨 텍스트 활성화
+        gameText.color = new Color32(161, 192, 90, 255);
+
+        gameText.text = "정답!\n\n앉아서 가기 성공!";
+
+        gs = GameState.Success;
     }
 }

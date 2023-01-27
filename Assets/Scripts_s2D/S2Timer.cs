@@ -7,7 +7,7 @@ using System;
 public class S2Timer : MonoBehaviour
 {
     //public static S2Timer s2timer;
-    public string tTimer = @"00.000";
+    public string tTimer = @"남은 시간: 00.000";
     private bool isPlaying = true;
     public float totalSeconds = 60;
     public Text tText;
