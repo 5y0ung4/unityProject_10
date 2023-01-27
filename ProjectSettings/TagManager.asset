@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Off
   layers:
   - Default
   - TransparentFX
@@ -17,6 +18,12 @@ TagManager:
   - GameBar
   - Note
   - Heart
+  - background
+  - professor
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -41,6 +48,12 @@ TagManager:
   - name: Background
     uniqueID: 3426114801
     locked: 0
+  - name: professor
+    uniqueID: 3511937301
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 3967770645
     locked: 0
