@@ -8,10 +8,8 @@ public class S2GameManager : MonoBehaviour
     public static S2GameManager gm;
 
     public GameObject gameLabel;
-    //public GameObject instructionText;
 
     public Text gameText;
-    //public Text instText;
 
     public GameObject readyImage;
     public GameObject instructionImage;
@@ -27,8 +25,6 @@ public class S2GameManager : MonoBehaviour
     GameObject base4;
 
     GameObject loading;
-
-    //S2Timer totalSeconds;
 
     private void Awake()
     {
@@ -46,7 +42,8 @@ public class S2GameManager : MonoBehaviour
         GameOver,
         Success,
         OverEnd,
-        SuccessEnd
+        SuccessEnd,
+        Loading
     }
 
     public GameState gState;
@@ -59,17 +56,11 @@ public class S2GameManager : MonoBehaviour
         gameText = gameLabel.GetComponent<Text>();
         gameText.text = "지하철 타러 가는 중";
         gameText.color = new Color32(255, 255, 255, 255);
-        gameText.fontSize = 50;
-
-        //instText = instructionText.GetComponent<Text>();
+        gameText.fontSize = 70;
 
         readyImage.SetActive(true);
 
         StartCoroutine(ReadyToStart());
-
-        //totalSeconds = GameObject.Find("TimeManager").GetComponent<S2Timer>();
-
-
     }
 
     // Update is called once per frame
@@ -79,18 +70,9 @@ public class S2GameManager : MonoBehaviour
 
         if (gState == GameState.Instruction)
         {
-            //StartCoroutine(Instruction());
-
             loading.SetActive(false);
             readyImage.SetActive(false);
             instructionImage.SetActive(true);
-
-            //gameLabel.SetActive(false);
-
-            //instText = instructionText.GetComponent<Text>();
-            //instructionText.SetActive(true);
-            //instText.text = "설명";
-            //instText.color = new Color32(255, 255, 255, 255);
 
             gameText.text = "<size=50><color=#DB294D>게임설명</color></size><color=#FFBF21>\n\n별</color>에 맞춰 클릭하면 <color=#EC7786>성공</color>!\n\n시간 안에 역 이름을 완성하면 집에 갈 수 있어\n\n완성하지 못하면 <color=#EC7786>내릴 수 없다는 사실</color> 조심해!!"; // 수정
             gameText.color = new Color32(207, 225, 245, 255);
@@ -127,7 +109,7 @@ public class S2GameManager : MonoBehaviour
             gameEndImage.SetActive(true);
 
             gameText.text = "Success!";
-            gameText.color = new Color32(255, 255, 255, 255); // 색 조정
+            gameText.color = new Color32(255, 255, 255, 255);
             gameText.fontSize = 70;
 
             homeButton.SetActive(true);
@@ -138,15 +120,10 @@ public class S2GameManager : MonoBehaviour
             endingImage.SetActive(true);
 
             gameText.text = "졸다가 내릴 역을 놓쳤다\n\n돌아가느라 더 피곤해졌다 . . . ▼";
-            gameText.color = new Color32(255, 255, 255, 255); // 색 조정
+            gameText.color = new Color32(255, 255, 255, 255);
             gameText.fontSize = 40;
 
-            if (Input.GetMouseButton(0))
-            {
-                gameText.text = "집으로 가자 ▼";
-                gameText.color = new Color32(255, 255, 255, 255);
-                gameText.fontSize = 40; // 집가는화면으로변경
-            }
+            StartCoroutine(goLoading());
         }
 
         if (gState == GameState.SuccessEnd)
@@ -154,15 +131,19 @@ public class S2GameManager : MonoBehaviour
             endingImage.SetActive(true);
 
             gameText.text = "드디어 내릴 역에 도착했다\n\n집으로 가자! ▼";
-            gameText.color = new Color32(255, 255, 255, 255); // 색 조정
+            gameText.color = new Color32(255, 255, 255, 255);
             gameText.fontSize = 40;
 
-            if (Input.GetMouseButton(0))
-            {
-                gameText.text = "집으로 가자 ▼";
-                gameText.color = new Color32(255, 255, 255, 255);
-                gameText.fontSize = 40; // 집가는화면으로변경
-            }
+            StartCoroutine(goLoading());
+        }
+
+        if (gState == GameState.Loading)
+        {
+            loading.SetActive(true);
+
+            gameText.text = "집으로 가는 중";
+            gameText.color = new Color32(255, 255, 255, 255);
+            gameText.fontSize = 70;
         }
     }
 
@@ -174,10 +155,10 @@ public class S2GameManager : MonoBehaviour
         
     }
 
-    IEnumerator SuccessEnding()
+    IEnumerator goLoading()
     {
-        
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
 
+        gState = GameState.Loading;
     }
 }
