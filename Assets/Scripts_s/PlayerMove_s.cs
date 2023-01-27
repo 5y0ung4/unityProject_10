@@ -21,7 +21,7 @@ public class PlayerMove_s : MonoBehaviour
     void Update()
     {
         // 게임 상태 제어
-        if(GameManager_s.gm.gs != GameManager_s.GameState.Run)
+        if (GameManager_s.gm.gs != GameManager_s.GameState.Run)
         {
             return;
         }

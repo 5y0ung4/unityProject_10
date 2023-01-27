@@ -11,15 +11,26 @@ public class TypingEffect : MonoBehaviour
     public GameObject StartTalk;
     
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        gameObject.SetActive(true);
-        StartCoroutine(_typing());
+        
+
+        if (Input.GetButtonUp("ButtonG")==true)
+        {
+            gameObject.SetActive(true);
+
+            StartCoroutine(_typing());
+        }
+        else
+            return;
+        
+       
     }
 IEnumerator _typing()
     {
-        yield return new WaitForSeconds(2f);
-        for(int i = 0; i <= m_text.Length; i++)
+       
+
+        for (int i = 0; i <= m_text.Length; i++)
         {
             tx.text = m_text.Substring(0,i);
 

@@ -25,7 +25,7 @@ public class ProfMove_pr : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene("profroom2D");
+            SceneManager.LoadScene("profroom2Dexplain");
         }
 
     }
