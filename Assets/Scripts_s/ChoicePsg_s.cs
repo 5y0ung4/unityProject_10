@@ -36,6 +36,7 @@ public class ChoicePsg_s : MonoBehaviour
                 {
                     print("정답");
                     chance = -1;
+                    GameManager_s.gm.gameSuccess();
                 }
                 else
                 {
@@ -43,14 +44,17 @@ public class ChoicePsg_s : MonoBehaviour
                     if (chance == 2)
                     {
                         print("땡! 기회가 2번 남았습니다");
+                        StartCoroutine(GameManager_s.gm.try1());
                     }
                     else if (chance == 1)
                     {
                         print("땡! 기회가 1번 남았습니다");
+                        StartCoroutine(GameManager_s.gm.try2());
                     }
                     else if (chance == 0)
                     {
                         print("game over, 당신은 앉아서 갈 수 없습니다");
+                        GameManager_s.gm.gameOver();
                     }
                 }
             }
