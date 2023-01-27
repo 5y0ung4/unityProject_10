@@ -57,8 +57,9 @@ public class S2GameManager : MonoBehaviour
         gState = GameState.Ready;
 
         gameText = gameLabel.GetComponent<Text>();
-        gameText.text = "Loading";
+        gameText.text = "지하철 타러 가는 중";
         gameText.color = new Color32(255, 255, 255, 255);
+        gameText.fontSize = 50;
 
         //instText = instructionText.GetComponent<Text>();
 
@@ -91,9 +92,9 @@ public class S2GameManager : MonoBehaviour
             //instText.text = "설명";
             //instText.color = new Color32(255, 255, 255, 255);
 
-            gameText.text = "설명\n1.그냥누르면됨..."; // 수정
-            gameText.color = new Color32(255, 255, 255, 255);
-            gameText.fontSize = 30;
+            gameText.text = "<size=50><color=#DB294D>게임설명</color></size><color=#FFBF21>\n\n별</color>에 맞춰 클릭하면 <color=#EC7786>성공</color>!\n\n시간 안에 역 이름을 완성하면 집에 갈 수 있어\n\n완성하지 못하면 <color=#EC7786>내릴 수 없다는 사실</color> 조심해!!"; // 수정
+            gameText.color = new Color32(207, 225, 245, 255);
+            gameText.fontSize = 40;
 
             playButton.SetActive(true);
         }
@@ -103,8 +104,8 @@ public class S2GameManager : MonoBehaviour
             gameLabel.SetActive(true);
             gameEndImage.SetActive(true);
             gameText.text = "GameOver";
-            gameText.color = new Color32(255, 0, 0, 255);
-            gameText.fontSize = 40;
+            gameText.color = new Color32(255, 255, 255, 255);
+            gameText.fontSize = 70;
 
             homeButton.SetActive(true);
         }
@@ -126,8 +127,8 @@ public class S2GameManager : MonoBehaviour
             gameEndImage.SetActive(true);
 
             gameText.text = "Success!";
-            gameText.color = new Color32(255, 0, 0, 255); // 색 조정
-            gameText.fontSize = 40;
+            gameText.color = new Color32(255, 255, 255, 255); // 색 조정
+            gameText.fontSize = 70;
 
             homeButton.SetActive(true);
         }
@@ -136,7 +137,7 @@ public class S2GameManager : MonoBehaviour
         {
             endingImage.SetActive(true);
 
-            gameText.text = "졸다가 내릴 역을 놓쳤다\n돌아가느라 더 피곤해졌다 . . . ▼";
+            gameText.text = "졸다가 내릴 역을 놓쳤다\n\n돌아가느라 더 피곤해졌다 . . . ▼";
             gameText.color = new Color32(255, 255, 255, 255); // 색 조정
             gameText.fontSize = 40;
 
@@ -152,7 +153,7 @@ public class S2GameManager : MonoBehaviour
         {
             endingImage.SetActive(true);
 
-            gameText.text = "드디어 내릴 역에 도착했다\n집으로 가자! ▼";
+            gameText.text = "드디어 내릴 역에 도착했다\n\n집으로 가자! ▼";
             gameText.color = new Color32(255, 255, 255, 255); // 색 조정
             gameText.fontSize = 40;
 
