@@ -20,8 +20,6 @@ public class CGameManager : MonoBehaviour
 
     GameObject loading;
 
-    //Font iFont = Resources.GetBuiltinResource<Font>("Arial.ttf");
-
     private void Awake()
     {
         if (gm == null)
@@ -77,7 +75,7 @@ public class CGameManager : MonoBehaviour
 
             gameLabel.SetActive(true);
 
-            gameText.text = "Time's up!"; // 수정
+            gameText.text = "<color=#44C642>Time</color><color=#FFDF7C>'</color><color=#F67C94>s</color> <color=#FFDF7C>up</color><color=#56BDFF>!</color>";
             gameText.color = new Color32(255, 255, 255, 255);
             gameText.fontSize = 70;
 
@@ -86,7 +84,7 @@ public class CGameManager : MonoBehaviour
 
         if (gState == GameState.End)
         {
-            gameText.text = "드디어 강의가 끝났다. . .\n\n오늘은 교수님과 점심 식사를 하기로 했다\n\n연구실로 가자▼"; // 수정
+            gameText.text = "드디어 강의가 끝났다. . .\n\n오늘은 교수님과 점심 식사를 하기로 했다\n\n연구실로 가자▼";
             gameText.color = new Color32(255, 255, 255, 255);
             gameText.fontSize = 50;
 
@@ -95,12 +93,12 @@ public class CGameManager : MonoBehaviour
 
         if (gState == GameState.Loading)
         {
+            loading = GameObject.Find("Canvas").transform.GetChild(9).gameObject;
+            loading.SetActive(true);
+
             gameText.text = "연구실로 이동 중";
             gameText.color = new Color32(255, 255, 255, 255);
             gameText.fontSize = 70;
-
-            loading = GameObject.Find("Canvas").transform.GetChild(9).gameObject;
-            loading.SetActive(true);
         }
     }
 

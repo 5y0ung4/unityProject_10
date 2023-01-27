@@ -31,6 +31,17 @@ public class CPlayerMove : MonoBehaviour
 
         Vector3 dir = new Vector3(h, 0, 0);
 
+        if (Input.GetAxisRaw("Horizontal") < 0)
+        {
+            dir = Vector3.left;
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (Input.GetAxisRaw("Horizontal") > 0)
+        {
+            dir = Vector3.right;
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+
         transform.position += dir * speed * Time.deltaTime;
 
         scoreSlider.value = (float)score / (float)maxScore;
