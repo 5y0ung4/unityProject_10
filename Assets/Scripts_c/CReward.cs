@@ -52,10 +52,10 @@ public class CReward : MonoBehaviour
 
         sc.score = sc.score + 10;
 
-        //if (other.gameObject.name == "Player")
-        //{
-        //    CSoundManager.soundManager.PlaySound();
-        //}
+        if (other.gameObject.name == "Player")
+        {
+            CSoundManager.soundManager.PlaySound();
+        }
 
         heart1 = GameObject.Find("Heart").transform.GetChild(0).gameObject;
         heart2 = GameObject.Find("Heart").transform.GetChild(1).gameObject;
