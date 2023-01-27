@@ -21,7 +21,9 @@ public class PrDialogue1 : MonoBehaviour
 
 
 
-    //public GameObject ChangeImage_pr;
+    public GameObject changeImage_pr;
+    ChangeImage_pr chpr;
+   
     //Image thisImg;
 
     private void Start()
@@ -33,36 +35,43 @@ public class PrDialogue1 : MonoBehaviour
         ButtonC.onClick.AddListener(OnClickButtonC);
 
 
-
-
-        void OnClickButtonA()
-        {
-            
-            labelStartText.text = "그래. 잘 지냈니?";
-            //ChangeImage_pr.GetComponent<ChangeImage_pr>().ChangeImage1();
-           
-            currentdegree= likedegree--;
-           ldslider.value = (float)likedegree / mxlikedegree;
-
-            
-        }
-
-        void OnClickButtonB()
-        {
-            
-            labelStartText.text = "허허. 미안하구나.";
-            currentdegree = likedegree--;
-            ldslider.value = (float)likedegree / mxlikedegree;
-        }
-
-        void OnClickButtonC()
-        {
-
-            labelStartText.text = "그래 씩씩하구나. 아주 좋아!";
-            
-        }
+        currentdegree = mxlikedegree;
+        //chpr = GetComponent<ChangeImage_pr>();
+        chpr =GameObject.Find("smile_prof").GetComponent<ChangeImage_pr>();
+        
 
     }
 
-   
+    public void OnClickButtonA()
+    {
+
+        labelStartText.text = "그래. 잘 지냈니?";
+        changeImage_pr.GetComponent<ChangeImage_pr>().ChangeImage1();
+        chpr.ChangeImage1();
+
+        currentdegree -= likedegree;
+        ldslider.value = (float)currentdegree / mxlikedegree;
+
+
+    }
+
+    void OnClickButtonB()
+    {
+
+        labelStartText.text = "허허. 미안하구나.";
+        //currentdegree = likedegree--;
+        changeImage_pr.GetComponent<ChangeImage_pr>().ChangeImage2();
+
+        currentdegree -= likedegree;
+        ldslider.value = (float)currentdegree / mxlikedegree;
+    }
+
+    void OnClickButtonC()
+    {
+
+        labelStartText.text = "그래 씩씩하구나. 아주 좋아!";
+        
+
+    }
+
 }
