@@ -13,10 +13,6 @@ public class PlayerMove : MonoBehaviour
 
     public float yVelocity = 0;
 
-    public float jumpPower = 5f;
-
-    public bool isJumping = false;
-
     public float time = 60;
 
     int maxTime = 60;
@@ -29,6 +25,8 @@ public class PlayerMove : MonoBehaviour
 
     //Animator anim;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +38,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time -= Time.deltaTime;
+        
 
         if (GameManager.gm.gState != GameManager.GameState.Run)
         {
@@ -61,18 +59,20 @@ public class PlayerMove : MonoBehaviour
 
         //transform.position += dir * moveSpeed * Time.deltaTime;
 
-        if (isJumping && cc.collisionFlags == CollisionFlags.Below)
-        {
-            isJumping = false;
-            yVelocity = 0;
-        }
+        
 
-        //if (Input.GetButtonDown("Jump") && !isJumping)
-        if (!isJumping && Input.GetButtonDown("Jump"))
-        {
-            yVelocity = jumpPower;
-            isJumping = true;
-        }
+        //if (isJumping && cc.collisionFlags == CollisionFlags.Below)
+        //{
+        //    isJumping = false;
+        //    yVelocity = 0;
+        //}
+
+        ////if (Input.GetButtonDown("Jump") && !isJumping)
+        //if (!isJumping && Input.GetButtonDown("Jump"))
+        //{
+        //    yVelocity = jumpPower;
+        //    isJumping = true;
+        //}
 
         yVelocity += gravity * Time.deltaTime;
         dir.y = yVelocity;
@@ -91,44 +91,23 @@ public class PlayerMove : MonoBehaviour
             GameManager.gm.gState = GameManager.GameState.Success;
         }
 
-        else if (collision.collider.gameObject.CompareTag("Cat"))
-        {
-            GameManager.gm.gState = GameManager.GameState.Cat;
-        }
+        //else if (collision.collider.gameObject.CompareTag("Pseudo"))
+        //{
 
-        else if (collision.collider.gameObject.CompareTag("Pseudo"))
-        {
-            GameManager.gm.gState = GameManager.GameState.Pseudo;
-        }
+        //    GameManager.gm.gState = GameManager.GameState.Pseudo;
+        //}
 
-        else if (collision.collider.gameObject.CompareTag("Wall"))
+        if (collision.collider.gameObject.CompareTag("Wall"))
         {
             GameManager.gm.gState = GameManager.GameState.Breakaway;
         }
 
-        else if (collision.collider.gameObject.CompareTag("OtherBox"))
-        {
-            GameManager.gm.gState = GameManager.GameState.Misunderstand;
-        }
+        //else if (collision.collider.gameObject.CompareTag("OtherBox"))
+        //{
+        //    GameManager.gm.gState = GameManager.GameState.Misunderstand;
+        //}
+
+        Debug.Log(GameManager.gm.gState);
     }
 
-    //public void DamageAction(int damage)
-    //{
-    //    hp -= damage;
-    //    //print("플레이어 체력: " + hp);
-
-    //    if (hp > 0)
-    //    {
-    //        StartCoroutine(PlayHitEffect());
-    //    }
-    //}
-
-    //IEnumerator PlayHitEffect()
-    //{
-    //    hitEffect.SetActive(true);
-
-    //    yield return new WaitForSeconds(0.3f);
-
-    //    hitEffect.SetActive(false);
-    //}
 }
