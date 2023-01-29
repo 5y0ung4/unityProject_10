@@ -277,6 +277,7 @@ MonoBehaviour:
   mxlikedegree: 100
   currentdegree: 0
   ldslider: {fileID: 0}
+  ChoiceWindow: {fileID: 0}
   changeImage_pr: {fileID: 0}
 --- !u!1 &69794181
 GameObject:
@@ -378,6 +379,7 @@ MonoBehaviour:
   mxlikedegree: 100
   currentdegree: 0
   ldslider: {fileID: 943717079}
+  ChoiceWindow: {fileID: 0}
   changeImage_pr: {fileID: 1094352066}
 --- !u!1 &77129635
 GameObject:
@@ -1030,6 +1032,99 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 629424437}
   m_CullTransparentMesh: 1
+--- !u!1 &733980553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 733980555}
+  - component: {fileID: 733980554}
+  m_Layer: 0
+  m_Name: Gamemanagerpr
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &733980554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733980553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab1e67e7597287438d0dc9d1659fb0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  qarray:
+  - "\uAC00\uC7A5 \uAC00\uBCF4\uACE0 \uC2F6\uC740 \uB098\uB77C\uB294?"
+  - "\uAC00\uC7A5 \uC88B\uC544\uD558\uB294 \uC74C\uC2DD\uC740?"
+  - "\uAC00\uC7A5 \uC990\uACA8\uD558\uB294 \uC2A4\uD3EC\uCE20\uB294?"
+  - "\uAC00\uC7A5 \uC88B\uC544\uD558\uB294 \uC0C9\uAE54\uC740?"
+  - "\uBC29\uD559 \uB54C \uD558\uACE0 \uC2F6\uC740 \uAC83\uC740?"
+  - "\uAC00\uC7A5 \uC2EB\uC5B4\uD558\uB294 \uAC83\uC740?"
+  - "\uB098\uC758 \uC5F0\uCC28\uB294?"
+  - "\uB098\uC758 \uD608\uC561\uD615\uC740?"
+  - "\uB0B4\uAC00 \uAC00\uC7A5 \uBABB\uD558\uB294 \uAC83\uC740?"
+  - "\uB098\uB294 \uC624\uB298 \uC218\uC5C5\uC774 \uBA87 \uAC1C \uB0A8\uC544\uC788\uC744\uAE4C?"
+  Aarray:
+  - "\uC774\uC9D1\uD2B8"
+  - "\uB5A1\uBCF6\uC774"
+  - "\uC218\uC601"
+  - "\uC5F0\uBD84\uD64D\uC0C9"
+  - "\uC720\uB7FD\uC5EC\uD589"
+  - "\uBAA8\uAE30"
+  - "30\uB144"
+  - "AB\uD615"
+  - "\uAC00\uC704\uBC14\uC704\uBCF4"
+  - "0\uAC1C"
+  Barray:
+  - "\uB124\uB35C\uB780\uB4DC"
+  - "\uACF1\uCC3D\uC804\uACE8"
+  - "\uACE8\uD504"
+  - "\uB0A8\uC0C9"
+  - "\uB3C5\uC11C"
+  - "\uB354\uC704"
+  - "17\uB144"
+  - "O\uD615"
+  - "\uC554\uC0B0"
+  - "1\uAC1C"
+  Carray:
+  - "\uB7EC\uC2DC\uC544"
+  - "\uB179\uB450\uC804 "
+  - "\uD0C1\uAD6C"
+  - "\uAC80\uC815\uC0C9 "
+  - "\uD734\uB300\uD3F0 \uBC14\uAFB8\uAE30"
+  - "\uC57C\uADFC"
+  - "25\uB144"
+  - "A\uD615"
+  - "\uB2EC\uB9AC\uAE30"
+  - "2\uAC1C"
+  i: 0
+  qtextUI: {fileID: 2016030849}
+  savewords: {fileID: 0}
+  atextUI: {fileID: 940026257}
+  btextUI: {fileID: 957488341}
+  ctextUI: {fileID: 1466824062}
+--- !u!4 &733980555
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733980553}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 967.354, y: 1004.07947, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &824641116
 GameObject:
   m_ObjectHideFlags: 0
@@ -1707,6 +1802,7 @@ MonoBehaviour:
   mxlikedegree: 100
   currentdegree: 0
   ldslider: {fileID: 0}
+  ChoiceWindow: {fileID: 0}
   changeImage_pr: {fileID: 0}
 --- !u!114 &1185201414
 MonoBehaviour:
@@ -2507,6 +2603,7 @@ MonoBehaviour:
   mxlikedegree: 100
   currentdegree: 0
   ldslider: {fileID: 943717079}
+  ChoiceWindow: {fileID: 0}
   changeImage_pr: {fileID: 77129635}
 --- !u!4 &1946178034
 Transform:
@@ -2676,6 +2773,7 @@ MonoBehaviour:
   mxlikedegree: 100
   currentdegree: 0
   ldslider: {fileID: 0}
+  ChoiceWindow: {fileID: 0}
   changeImage_pr: {fileID: 0}
 --- !u!1 &2016030846
 GameObject:

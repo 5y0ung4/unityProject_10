@@ -26,12 +26,6 @@ public class PrDialogue1 : MonoBehaviour
     public GameObject changeImage_pr;
     ChangeImage_pr chpr;
 
-    public string[] questionarray = { "안녕", "뭐해", "밥은?" };
-    public string[] answerAarray = { "비행기", "떡볶이", "강아지" };
-    public string[] answerBarray = { "파랑", "방서", "분무기" };
-    public string[] answerCarray = { "노트북", "손가락", "바다" };
-
-    public int i;
 
     //Image thisImg;
 
@@ -54,11 +48,11 @@ public class PrDialogue1 : MonoBehaviour
     public void OnClickButtonA()
     {
 
-        for (i = 0; i < questionarray.Length; i++)
-        {
-            labelStartText.text = questionarray[i];
-            //yield return new WaitUntil(ChoiceWindow = true);
-        }
+        //for (i = 0; i < questionarray.Length; i++)
+        //{
+        //    labelStartText.text = questionarray[i];
+        //    //yield return new WaitUntil(ChoiceWindow = true);
+        //}
         
         
         
@@ -76,12 +70,12 @@ public class PrDialogue1 : MonoBehaviour
 
     }
 
-    void OnClickButtonB()
+    public void OnClickButtonB()
     {
        
 
 
-        labelStartText.text = questionarray[0];
+        //labelStartText.text = questionarray[0];
         //currentdegree = likedegree--;
         changeImage_pr.GetComponent<ChangeImage_pr>().ChangeImage2();
 
@@ -92,10 +86,10 @@ public class PrDialogue1 : MonoBehaviour
 
     }
 
-    void OnClickButtonC()
+    public void OnClickButtonC()
     {
 
-        labelStartText.text = "그래 씩씩하구나. 아주 좋아!";
+       // labelStartText.text = "그래 씩씩하구나. 아주 좋아!";
 
         ChoiceWindow.SetActive(false);
 
