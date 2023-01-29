@@ -9,12 +9,15 @@ public class GameManager : MonoBehaviour
 
     public enum GameState
     {
+        Describe,
         Ready,
         Run,
         GameOver,
         Success,
+        Fail,
         Cat,
         Pseudo,
+        Stranger,
         Breakaway,
         Misunderstand
     }
@@ -25,11 +28,19 @@ public class GameManager : MonoBehaviour
 
     public GameObject gameLabel2;
 
-    Text gameText;
+    public Text gameText;
 
-    Text addText;
+    public Text addText;
+
+
+
+    //public GameObject startButton;
+
+    //Button gameButton;
 
     PlayerMove player;
+
+    ButtonClick buttonScript;
 
     private void Awake()
     {
@@ -44,40 +55,97 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gState = GameState.Ready;
+        //gState = GameState.Ready;
+        gState = GameState.Describe;
 
         gameText = gameLabel.GetComponent<Text>();
 
         addText = gameLabel2.GetComponent<Text>();
 
-        gameText.text = "준비...";
-        gameText.color = new Color32(255, 180, 0, 255);
+        
 
-        StartCoroutine(ReadyToStart());
+        //gameButton = startButton.GetComponent<Button>();
+
+        //gameText.text = "준비...";
+        //gameText.color = new Color32(255, 180, 0, 255);
+
+        //StartCoroutine(ReadyToStart());
 
         player = GameObject.Find("Player").GetComponent<PlayerMove>();
+        buttonScript = GameObject.Find("startButton").GetComponent<ButtonClick>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player.time <= 0)
+
+        switch (gState)
         {
-            gameOverImage.SetActive(true);
-            //player.GetComponentInChildren<Animator>().SetFloat("MoveMotion", 0f);
+            case GameState.Ready:
+                Ready();
+                break;
 
-            gameLabel.SetActive(true);
+            case GameState.Success:
+                Success();
+                break;
 
-            gameText.text = "제 시간에 찾아가기 실패... 지각했다.";
+            case GameState.Fail:
+                Fail();
+                break;
 
-            gameText.color = new Color32(255, 255, 255, 255);
+            case GameState.GameOver:
+                GameOver();
+                break;
 
-            
+            case GameState.Cat:
+                Cat();
+                break;
 
-            gState = GameState.GameOver;
+            case GameState.Pseudo:
+                Pseudo();
+                break;
+
+            case GameState.Stranger:
+                Stranger();
+                break;
+
+            case GameState.Breakaway:
+                Breakaway();
+                break;
+
+            case GameState.Misunderstand:
+                Misunderstand();
+                break;
+
+            case GameState.Run:
+                Run();
+                break;
+
+
+
+
         }
 
-        if(gState == GameState.Success)
+        void Ready()
+        {
+            gameText.text = "준비...";
+            gameText.color = new Color32(255, 180, 0, 255);
+
+            StartCoroutine(ReadyToStart());
+        }
+
+        void Run()
+        {
+            if (gState != GameState.Success && player.time <= 0)
+            {
+
+                gState = GameState.Fail;
+            }
+
+            player.time -= Time.deltaTime;
+        }
+
+        void Success()
         {
             gameOverImage.SetActive(true);
             //player.GetComponentInChildren<Animator>().SetFloat("MoveMotion", 0f);
@@ -87,40 +155,81 @@ public class GameManager : MonoBehaviour
             gameText.text = "지각하지 않고 제 시간에 도착해서 수업을 열심히 들었다!";
 
             gameText.color = new Color32(255, 255, 255, 255);
+
+            buttonScript.describeText.text = "게임 성공!";
+
+            StartCoroutine(ToGameOver());
         }
 
-        if(gState == GameState.Cat)
+        void Fail()
+        {
+            gameOverImage.SetActive(true);
+            //player.GetComponentInChildren<Animator>().SetFloat("MoveMotion", 0f);
+
+            gameLabel.SetActive(true);
+
+            gameText.text = "제 시간에 찾아가기 실패... 지각했다.";
+
+            buttonScript.describeText.text = "게임 실패...";
+
+            gameText.color = new Color32(255, 255, 255, 255);
+
+            StartCoroutine(ToGameOver());
+        }
+
+        void GameOver()
+        {
+            gameLabel.SetActive(false);
+            buttonScript.Button.SetActive(true);
+
+            buttonScript.ImageBackg.SetActive(true);
+
+
+            buttonScript.gameDescribed.SetActive(true);
+            buttonScript.bT.text = "다음 게임";
+        }
+
+        void Cat()
         {
             gameLabel2.SetActive(true);
 
-            addText.text = "슈냥이와 마주쳐서 행복해졌다.";
+            addText.text = "슈냥이를 만나서 행복해졌다. 더 빨리 걸을 수 있을 것 같다. \n(+ 5초)";
+
+            player.time += 5;
 
             gameText.color = new Color32(0, 0, 0, 255);
 
-            new WaitForSeconds(1f);
 
-            gameLabel2.SetActive(false);
-
-
-            gState = GameState.Run;
+            StartCoroutine(AnyToRun());
         }
 
-        if (gState == GameState.Pseudo)
+        void Pseudo()
         {
             gameLabel2.SetActive(true);
 
-            addText.text = "교내에 돌아다니는 신천지와 마주쳤다. 왠지 피곤해진 것 같다...";
+            addText.text = "교내를 떠도는 신천지와 마주쳤다. 왠지 피곤해진 것 같다... \n(- 5초)";
+
+            player.time -= 5;
 
             gameText.color = new Color32(0, 0, 0, 255);
 
-            new WaitForSeconds(1f);
-
-            gameLabel2.SetActive(false);
-
-            gState = GameState.Run;
+            StartCoroutine(AnyToRun());
         }
 
-        if (gState == GameState.Misunderstand)
+        void Stranger()
+        {
+            gameLabel2.SetActive(true);
+
+            addText.text = "외부인이 길을 물어온다. 거절하지 못하고 알려 줬다. \n(- 5초, 갓생 게이지 증가)";
+
+            player.time -= 5;
+
+            gameText.color = new Color32(0, 0, 0, 255);
+
+            StartCoroutine(AnyToRun());
+        }
+
+        void Misunderstand()
         {
             gameLabel2.SetActive(true);
 
@@ -128,39 +237,66 @@ public class GameManager : MonoBehaviour
 
             gameText.color = new Color32(0, 0, 0, 255);
 
-            new WaitForSeconds(0.5f);
-
             gameLabel2.SetActive(false);
 
-            gState = GameState.Run;
+            StartCoroutine(AnyToRun());
         }
 
-        if (gState == GameState.Breakaway)
+        void Breakaway()
         {
             gameLabel2.SetActive(true);
 
-            addText.text = "이쪽으로 더 가면 교외인 것 같다... 다른 길을 찾아 보자.";
+            addText.text = "이쪽으로 더 가면 왠지 학교를 벗어날 것 같다... 다른 길을 찾아 보자.";
 
             gameText.color = new Color32(0, 0, 0, 255);
 
-            new WaitForSeconds(1f);
+            StartCoroutine(AnyToRun());
+        }
 
-            gameLabel2.SetActive(false);
+
+        //코루틴
+        IEnumerator ReadyToStart()
+        {
+
+            yield return new WaitForSeconds(2f);
 
             gState = GameState.Run;
+
+            gameText.text = "Start!";
+
+            yield return new WaitForSeconds(0.5f);
+
+            gameLabel.SetActive(false);
+
+            gameOverImage.SetActive(false);
+
         }
-    }
 
-    IEnumerator ReadyToStart()
-    {
-        yield return new WaitForSeconds(2f);
+        IEnumerator AnyToRun()
+        {
+            gState = GameState.Run;
 
-        gameText.text = "출발!!";
+            yield return new WaitForSeconds(1.5f);
 
-        yield return new WaitForSeconds(0.5f);
+            addText.text = " ";
+            //gameLabel2.SetActive(false);
 
-        gameLabel.SetActive(false);
 
-        gState = GameState.Run;
+
+
+        }
+
+        IEnumerator ToGameOver()
+        {
+
+            yield return new WaitForSeconds(1.5f);
+
+            gameText.text = "게임 결과 로딩 중. . .";
+
+            yield return new WaitForSeconds(1.5f);
+
+            gState = GameState.GameOver;
+
+        }
     }
 }

@@ -9,6 +9,7 @@ TagManager:
   - Pseudo
   - Wall
   - OtherBox
+  - Stranger
   layers:
   - Default
   - TransparentFX
@@ -24,12 +25,6 @@ TagManager:
   - Heart
   - background
   - professor
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
   - 
   - 
   - 
