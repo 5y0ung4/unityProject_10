@@ -47,10 +47,10 @@ public class CEnemy : MonoBehaviour
 
         gameObject.SetActive(false);
 
-        //if (other.gameObject.name == "Player")
-        //{
-        //    CSoundManager.soundManager.PlaySound();
-        //}
+        if (other.gameObject.name == "Player")
+        {
+            CSoundManager.soundManager.PlaySound();
+        }
 
         GameObject emObject = GameObject.Find("EnemyManager");
         CEnemyManager manager =
