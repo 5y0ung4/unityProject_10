@@ -420,6 +420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WscoreSlider: {fileID: 743061709}
   WcurrentScore: 75
+  text: {fileID: 1781073310}
 --- !u!4 &827284293
 Transform:
   m_ObjectHideFlags: 0
