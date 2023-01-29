@@ -23,7 +23,14 @@ public class PrDialogue1 : MonoBehaviour
 
     public GameObject changeImage_pr;
     ChangeImage_pr chpr;
-   
+
+    public string[] questionarray = { "안녕", "뭐해", "밥은?" };
+    public string[] answerAarray = { "비행기", "떡볶이", "강아지" };
+    public string[] answerBarray = { "파랑", "방서", "분무기" };
+    public string[] answerCarray = { "노트북", "손가락", "바다" };
+
+    public int i;
+
     //Image thisImg;
 
     private void Start()
@@ -45,7 +52,14 @@ public class PrDialogue1 : MonoBehaviour
     public void OnClickButtonA()
     {
 
-        labelStartText.text = "그래. 잘 지냈니?";
+        for (i = 0; i < questionarray.Length; i++)
+        {
+            labelStartText.text = questionarray[i];
+            //yield return new WaitUntil(ChoiceWindow = true);
+        }
+        
+        
+        
         changeImage_pr.GetComponent<ChangeImage_pr>().ChangeImage1();
         chpr.ChangeImage1();
 
@@ -53,12 +67,18 @@ public class PrDialogue1 : MonoBehaviour
         ldslider.value = (float)currentdegree / mxlikedegree;
 
 
+
+
+
+
     }
 
     void OnClickButtonB()
     {
+       
 
-        labelStartText.text = "허허. 미안하구나.";
+
+        labelStartText.text = questionarray[0];
         //currentdegree = likedegree--;
         changeImage_pr.GetComponent<ChangeImage_pr>().ChangeImage2();
 

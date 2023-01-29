@@ -38,7 +38,7 @@ public class TypingEffect1 : MonoBehaviour
         prologuedialogue1.gameObject.SetActive(true);
     }
 
-    private IEnumerator _typing()
+    public IEnumerator _typing()
     {
         yield return new WaitForSeconds(2f);
 
