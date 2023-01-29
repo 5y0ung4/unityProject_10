@@ -15,11 +15,15 @@ public class ChoiceWindowRun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        while (true)
         {
-            
-            ChoiceWindow.SetActive(true);
+            if (Input.GetMouseButtonDown(0))
+            {
+
+                ChoiceWindow.SetActive(true);
+            }
         }
+       
     }
 
     //void OnMouseDown()

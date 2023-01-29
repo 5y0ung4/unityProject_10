@@ -11,6 +11,7 @@ public class PrDialogue1 : MonoBehaviour
     public Button ButtonC;
 
 
+
     public int likedegree=10;
 
     public int mxlikedegree = 100;
@@ -19,6 +20,7 @@ public class PrDialogue1 : MonoBehaviour
 
     public Slider ldslider;
 
+    public GameObject ChoiceWindow;
 
 
     public GameObject changeImage_pr;
@@ -66,6 +68,7 @@ public class PrDialogue1 : MonoBehaviour
         currentdegree -= likedegree;
         ldslider.value = (float)currentdegree / mxlikedegree;
 
+        ChoiceWindow.SetActive(false);
 
 
 
@@ -84,13 +87,19 @@ public class PrDialogue1 : MonoBehaviour
 
         currentdegree -= likedegree;
         ldslider.value = (float)currentdegree / mxlikedegree;
+
+        ChoiceWindow.SetActive(false);
+
     }
 
     void OnClickButtonC()
     {
 
         labelStartText.text = "그래 씩씩하구나. 아주 좋아!";
-        
+
+        ChoiceWindow.SetActive(false);
+
+
 
     }
 
