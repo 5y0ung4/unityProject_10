@@ -20,4 +20,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Score.unity
     guid: 1791f0090239f944fb3272b4ee4007b7
+  - enabled: 1
+    path: Assets/Scenes/StartMenu.unity
+    guid: 0474858f4e96f69448f0ad9cee12b84b
+  - enabled: 1
+    path: Assets/Scenes/classroom.unity
+    guid: bea7f25a8ad33104e89ca90109077744
+  - enabled: 1
+    path: Assets/Scenes/Home.unity
+    guid: 75a670c77e8948c45966baf48895fd63
+  - enabled: 1
+    path: Assets/Scenes/Subway.unity
+    guid: fde2aaea1799206419acd688e09de332
   m_configObjects: {}

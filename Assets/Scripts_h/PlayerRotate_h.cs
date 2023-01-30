@@ -17,6 +17,11 @@ public class PlayerRotate_h : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (homeManager_h.hm.ms != homeManager_h.MorningState.Run)
+        {
+            return;
+        }
+
         // 마우스 좌우 입력 받기
         float mouse_X = Input.GetAxis("Mouse X");
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager_s : MonoBehaviour
 {
@@ -18,15 +19,18 @@ public class GameManager_s : MonoBehaviour
     public enum GameState
     {
         Ready,
-        Run,
-        Fail,
-        GameOver,
-        Success
+        Run
     }
     public GameState gs;
 
     public GameObject gameLabel;
     Text gameText;
+
+    public GameObject background;
+    Image bg;
+
+    public GameObject nextBtn;
+    Button nb;
 
     // Start is called before the first frame update
     void Start()
@@ -34,15 +38,31 @@ public class GameManager_s : MonoBehaviour
         gs = GameState.Ready;
 
         gameText = gameLabel.GetComponent<Text>();
+        bg = background.GetComponent<Image>();
+        nb = nextBtn.GetComponent<Button>();
 
-        gameText.text = "곧 하차할 승객을 찾아보세요!\n\n준비!";
-        gameText.color = new Color32(168, 126, 228, 255);
+        nextBtn.SetActive(false);
 
         StartCoroutine(ReadyToRun()); // 게임 준비 -> 게임 시작
     }
 
     IEnumerator ReadyToRun()
     {
+        background.SetActive(true);
+
+        gameText.color = new Color32(178, 204, 255, 255);
+        gameText.text = "헉 만석이네..\n서서 가기 싫은데...";
+
+        yield return new WaitForSeconds(2.5f);
+
+        gameText.text = "흠..\n내릴 것 같은 사람 앞에 서있어보자!";
+
+        yield return new WaitForSeconds(2.5f);
+
+        background.SetActive(false);
+        gameText.color = new Color32(93, 90, 192, 255);
+        gameText.text = "곧 하차할 승객을 찾아보세요!\n준비!";
+        
         yield return new WaitForSeconds(2f); // 2초간 대기
 
         gameText.text = "시작!";
@@ -63,40 +83,46 @@ public class GameManager_s : MonoBehaviour
 
     public IEnumerator try1() // 1번 실패했을 때
     {
-        gs = GameState.Fail;
+        gs = GameState.Ready;
 
         gameLabel.SetActive(true); // 게임 라벨 텍스트 활성화
-        gameText.text = "땡!\n\n기회가 2번 남았습니다!";
+        background.SetActive(true);
+
+        gameText.text = "땡!\n기회가 2번 남았습니다!";
         gameText.color = new Color32(235, 83, 158, 255);
 
         yield return new WaitForSeconds(2f);
 
         gameLabel.SetActive(false); // 비활성화
+        background.SetActive(false);
         gs = GameState.Run;
     }
 
     public IEnumerator try2() // 2번 실패했을 때
     {
-        gs = GameState.Fail;
+        gs = GameState.Ready;
 
         gameLabel.SetActive(true); // 게임 라벨 텍스트 활성화
-        gameText.text = "땡!\n\n기회가 1번 남았습니다!";
+        background.SetActive(true);
+        gameText.text = "땡!\n기회가 1번 남았습니다!";
         gameText.color = new Color32(235, 83, 158, 255);
 
         yield return new WaitForSeconds(2f);
 
         gameLabel.SetActive(false); // 비활성화
+        background.SetActive(false);
         gs = GameState.Run;
     }
 
     public void gameOver() // 3번 실패 => 게임 오버
     {
         gameLabel.SetActive(true); // 게임 라벨 텍스트 활성화
+        background.SetActive(true);
         gameText.color = new Color32(237, 0, 109, 255);
 
-        gameText.text = "Game Over\n\n당신은 서서 가야합니다...";
+        gameText.text = "Game Over\n당신은 서서 가야합니다...";
 
-        gs = GameState.GameOver;
+        gs = GameState.Ready;
 
         StartCoroutine(EndToFail());
     }
@@ -104,13 +130,14 @@ public class GameManager_s : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
 
-        gameText.text = "에휴...\n\n자리를 계속 놓치네...";
-        gameText.color = new Color32(42, 0, 102, 255);
+        background.SetActive(true);
+        gameText.text = "에휴...\n자리를 계속 놓치네...";
+        gameText.color = new Color32(178, 204, 255, 255);
 
         yield return new WaitForSeconds(3.5f);
 
         gameText.text = "~ 이동중 ~";
-        gameText.color = new Color32(132, 90, 192, 255);
+        gameText.color = new Color32(181, 178, 255, 255);
 
         yield return new WaitForSeconds(3f);
 
@@ -118,26 +145,28 @@ public class GameManager_s : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        gameText.text = "휴 드디어 내린다...\n\n지각하기 전에 어서 가야겠어.";
-        gameText.color = new Color32(42, 0, 102, 255);
+        gameText.text = "휴 드디어 내린다...\n지각하기 전에 어서 가야겠어.";
+        gameText.color = new Color32(178, 204, 255, 255);
 
         yield return new WaitForSeconds(3.5f);
 
-        gameText.text = "서서 갔더니 더 피곤한 것 같아...\n\n수업 때 졸진 않을까 걱정되네...";
+        gameText.text = "서서 갔더니 더 피곤한 것 같아...\n수업 때 졸진 않을까 걱정되네...";
 
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3.5f);
 
-        gameLabel.SetActive(false);
+        gameText.text = "어휴 피곤해... \n학교나 가자..";
+        nextBtn.SetActive(true);
     }
 
     public void gameSuccess() // 게임 성공
     {
+        background.SetActive(true);
         gameLabel.SetActive(true); // 게임 라벨 텍스트 활성화
         gameText.color = new Color32(161, 192, 90, 255);
 
-        gameText.text = "정답!\n\n앉아서 가기 성공!";
+        gameText.text = "정답!\n앉아서 가기 성공!";
 
-        gs = GameState.Success;
+        gs = GameState.Ready;
 
         StartCoroutine(EndToSuccess());
     }
@@ -145,13 +174,13 @@ public class GameManager_s : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
 
-        gameText.text = "앗싸! 앞 사람 내린다!\n\n앉아서 가야지 ^_^";
-        gameText.color = new Color32(42, 0, 102, 255);
+        gameText.text = "앗싸! 앞 사람 내린다!\n앉아서 가야지 ^_^";
+        gameText.color = new Color32(178, 204, 255, 255);
 
         yield return new WaitForSeconds(3.5f);
 
         gameText.text = "~ 이동중 ~";
-        gameText.color = new Color32(132, 90, 192, 255);
+        gameText.color = new Color32(181, 178, 255, 255);
 
         yield return new WaitForSeconds(3f);
 
@@ -159,15 +188,21 @@ public class GameManager_s : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        gameText.text = "이제 곧 내린다!\n\n지각하기 전에 어서 가야겠어.";
-        gameText.color = new Color32(42, 0, 102, 255);
+        gameText.text = "이제 곧 내린다!\n내릴 준비 해야지.";
+        gameText.color = new Color32(178, 204, 255, 255);
 
         yield return new WaitForSeconds(3.5f);
 
-        gameText.text = "그래도 앉아서 갔더니 훨씬 덜 피곤한 것 같네.\n\n수업 들을 때 집중 잘되겠다!\n\n졸지 말고 열심히 들어야지 ㅎㅎ";
+        gameText.text = "그래도 앉아서 갔더니 훨씬 덜 피곤한 것 같네.\n수업 들을 때 집중 잘되겠다!\n졸지 말고 열심히 들어야지 ㅎㅎ";
 
         yield return new WaitForSeconds(4f);
 
-        gameLabel.SetActive(false);
+        gameText.text = "룰루~\n학교 가는 발걸음이 가볍다 ㅎ.ㅎ";
+        nextBtn.SetActive(true);
+    }
+
+    public void nextMap_btn()
+    {
+        SceneManager.LoadScene("classroom");
     }
 }

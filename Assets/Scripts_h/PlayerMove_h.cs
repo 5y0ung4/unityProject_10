@@ -23,6 +23,11 @@ public class PlayerMove_h : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(homeManager_h.hm.ms!=homeManager_h.MorningState.Run)
+        {
+            return;
+        }
+
         // 사용자 입력 받기
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
