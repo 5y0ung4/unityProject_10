@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
 
     public void OnClickNewGame()
     {
-        SceneManager.LoadScene("Home");
+        SceneManager.LoadScene("SceneNum5");
     }
 
     public void OnClickQuit()

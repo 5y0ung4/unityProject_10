@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class QuizManager : MonoBehaviour
 {
-    
+    public Answer answer;
+    public Slider ldslider;
+
     public List<QuestionAndAnswer> qna;
 
     public GameObject[] options;
@@ -20,26 +22,25 @@ public class QuizManager : MonoBehaviour
 
     public GameObject endGame;
 
-    public string Wintext= "휴~ 무사히 상담을 마쳤다. " + System.Environment.NewLine +
+    public string[] endText = 
+        {"휴~ 무사히 상담을 마쳤다. " + System.Environment.NewLine +
                "교수님 기분이 웬지 좋아보이시는걸? " + System.Environment.NewLine +
-               "기분좋게 강의실에 갈 수 있겠다.";
+               "기분좋게 강의실에 갈 수 있겠다.",
 
-    public string Losetext= "휴~ 무사히 상담을 마쳤다." + System.Environment.NewLine +
+        "휴~ 무사히 상담을 마쳤다." + System.Environment.NewLine +
                     "교수님 기분이 안 좋아지신 것 같은데.." + System.Environment.NewLine +
-                    "일단 강의실로 가자.";
+                    "일단 강의실로 가자."};
 
-    //private Text Wintext = "휴~ 무사히 상담을 마쳤다. " + System.Environment.NewLine +
-    //           "교수님 기분이 웬지 좋아보이시는걸? " + System.Environment.NewLine +
-    //           "기분좋게 강의실에 갈 수 있겠다.";
+    //public AudioClip audio;
 
-    //public string endgameText;
     // Start is called before the first frame update
     void Start()
     {
         
         endGame.SetActive(false);
+
         makeQuestion();
-        
+
     }
 
     // Update is called once per frame
@@ -48,52 +49,40 @@ public class QuizManager : MonoBehaviour
        
     }
 
-    void makeQuestion()
+    public void makeQuestion()
     {
-        GetComponent<Answer>();
-        if (qna.Count >=1)
+        
+        if (qna.Count >0)
         {
-         currentQuestion = Random.Range(0, qna.Count);
+        currentQuestion = Random.Range(0, qna.Count);
 
-            QuestionText.text = qna[currentQuestion].question;
+        QuestionText.text = qna[currentQuestion].question;
 
-            setAnswer();
+
+        setAnswer();
         }
         else
         {
             endGame.SetActive(true);
-            if ((GetComponent<Answer>().currentdegree) >= 50)
+
+            if (ldslider.value > 30)
             {
-                Debug.Log("컴포넌트불러옴");
-                Endgame.text = Wintext;
+                Debug.Log("컴포넌트1불러옴");
+                Endgame.text = endText[0];
+                //Debug.Log(endText[0]);
             }
             else
+            {
+                Debug.Log("컴포넌트2불러옴");
+                //Debug.Log(endText[1]);
+                Endgame.text = endText[1];
+                //Endgame.text = endText[1];
+            }
 
-                Debug.Log("컴포넌트불러옴");
-            Endgame.text = Losetext;
+                
         }
-            
-    
-    ///*else*/ if((GetComponent<Answer>().currentdegree) > 50)
-    //{
-    //    endGame.SetActive(true);
-    //    Debug.Log("문제를 다 풀었습니다.");            
 
-
-
-    //Endgame.text = "휴~ 무사히 상담을 마쳤다. " + System.Environment.NewLine +
-    //  "교수님 기분이 웬지 좋아보이시는걸? " + System.Environment.NewLine +
-    //  "기분좋게 강의실에 갈 수 있겠다.";
-
-
-
-
-
-
-
-
-
-}
+    }
 
 
     void setAnswer()
@@ -103,9 +92,10 @@ public class QuizManager : MonoBehaviour
             //options[i].GetComponent<Text>().text=
             //options[i].GetComponent<Answer>().iswrong = false;
             //options[i].transform.GetChild(0).GetComponent<Text>().text = qna[i].Answers[i];
-            options[i].transform.GetChild(0).GetComponent<Text>().text = qna[currentQuestion].Answers[i];
+            
+           options[i].transform.GetChild(0).GetComponent<Text>().text = qna[currentQuestion].Answers[i];
 
-            if (qna[i].correctAnswer == i + 1)
+            if (qna[i].correctAnswer == i)
             {
                 options[i].GetComponent<Answer>().isCorrect = true;
             }

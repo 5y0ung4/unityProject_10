@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class GameManager_s : MonoBehaviour
 {
@@ -19,7 +18,9 @@ public class GameManager_s : MonoBehaviour
     public enum GameState
     {
         Ready,
-        Run
+        Run,
+        Success,
+        Fail
     }
     public GameState gs;
 
@@ -28,9 +29,8 @@ public class GameManager_s : MonoBehaviour
 
     public GameObject background;
     Image bg;
-
-    public GameObject nextBtn;
-    Button nb;
+    public GameObject click;
+    Image ck;
 
     // Start is called before the first frame update
     void Start()
@@ -39,9 +39,9 @@ public class GameManager_s : MonoBehaviour
 
         gameText = gameLabel.GetComponent<Text>();
         bg = background.GetComponent<Image>();
-        nb = nextBtn.GetComponent<Button>();
+        ck = click.GetComponent<Image>();
 
-        nextBtn.SetActive(false);
+        click.SetActive(false);
 
         StartCoroutine(ReadyToRun()); // 게임 준비 -> 게임 시작
     }
@@ -55,7 +55,7 @@ public class GameManager_s : MonoBehaviour
 
         yield return new WaitForSeconds(2.5f);
 
-        gameText.text = "흠..\n내릴 것 같은 사람 앞에 서있어보자!";
+        gameText.text = "흠..\n내릴 것 같은 사람 앞에 서 있어보자!";
 
         yield return new WaitForSeconds(2.5f);
 
@@ -70,6 +70,7 @@ public class GameManager_s : MonoBehaviour
         yield return new WaitForSeconds(0.5f); // 0.5초간 대기
 
         gameLabel.SetActive(false); // 게임라벨 텍스트 비활성화
+        click.SetActive(true);
         gs = GameState.Run;
 
         yield break;
@@ -87,6 +88,7 @@ public class GameManager_s : MonoBehaviour
 
         gameLabel.SetActive(true); // 게임 라벨 텍스트 활성화
         background.SetActive(true);
+        click.SetActive(false);
 
         gameText.text = "땡!\n기회가 2번 남았습니다!";
         gameText.color = new Color32(235, 83, 158, 255);
@@ -95,6 +97,7 @@ public class GameManager_s : MonoBehaviour
 
         gameLabel.SetActive(false); // 비활성화
         background.SetActive(false);
+        click.SetActive(true);
         gs = GameState.Run;
     }
 
@@ -104,6 +107,7 @@ public class GameManager_s : MonoBehaviour
 
         gameLabel.SetActive(true); // 게임 라벨 텍스트 활성화
         background.SetActive(true);
+        click.SetActive(false);
         gameText.text = "땡!\n기회가 1번 남았습니다!";
         gameText.color = new Color32(235, 83, 158, 255);
 
@@ -111,6 +115,7 @@ public class GameManager_s : MonoBehaviour
 
         gameLabel.SetActive(false); // 비활성화
         background.SetActive(false);
+        click.SetActive(true);
         gs = GameState.Run;
     }
 
@@ -118,11 +123,12 @@ public class GameManager_s : MonoBehaviour
     {
         gameLabel.SetActive(true); // 게임 라벨 텍스트 활성화
         background.SetActive(true);
+        click.SetActive(false);
         gameText.color = new Color32(237, 0, 109, 255);
 
-        gameText.text = "Game Over\n당신은 서서 가야합니다...";
+        gameText.text = "Game Over\n힘들게 서서 가야겠네요...";
 
-        gs = GameState.Ready;
+        gs = GameState.Fail;
 
         StartCoroutine(EndToFail());
     }
@@ -154,19 +160,20 @@ public class GameManager_s : MonoBehaviour
 
         yield return new WaitForSeconds(3.5f);
 
-        gameText.text = "어휴 피곤해... \n학교나 가자..";
-        nextBtn.SetActive(true);
+        gameText.text = "마우스 오른쪽 버튼을 누르면\n현재 스코어 확인 가능!";
+        gameText.color = new Color32(181, 178, 255, 255);
     }
 
     public void gameSuccess() // 게임 성공
     {
         background.SetActive(true);
         gameLabel.SetActive(true); // 게임 라벨 텍스트 활성화
+        click.SetActive(false);
         gameText.color = new Color32(161, 192, 90, 255);
 
         gameText.text = "정답!\n앉아서 가기 성공!";
 
-        gs = GameState.Ready;
+        gs = GameState.Success;
 
         StartCoroutine(EndToSuccess());
     }
@@ -188,21 +195,17 @@ public class GameManager_s : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        gameText.text = "이제 곧 내린다!\n내릴 준비 해야지.";
+        gameText.text = "이제 곧 내린다!\n내릴 준비 해야지";
         gameText.color = new Color32(178, 204, 255, 255);
 
         yield return new WaitForSeconds(3.5f);
 
-        gameText.text = "그래도 앉아서 갔더니 훨씬 덜 피곤한 것 같네.\n수업 들을 때 집중 잘되겠다!\n졸지 말고 열심히 들어야지 ㅎㅎ";
+        gameText.text = "그래도 앉아서 갔더니 훨씬 덜 피곤한 것 같네.\n컨디션 좋게 수업 들을 수 있겠다!";
 
         yield return new WaitForSeconds(4f);
 
-        gameText.text = "룰루~\n학교 가는 발걸음이 가볍다 ㅎ.ㅎ";
-        nextBtn.SetActive(true);
+        gameText.text = "마우스 오른쪽 버튼을 누르면\n현재 스코어 확인 가능!";
+        gameText.color = new Color32(181, 178, 255, 255);
     }
 
-    public void nextMap_btn()
-    {
-        SceneManager.LoadScene("classroom");
-    }
 }

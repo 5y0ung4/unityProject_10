@@ -6,19 +6,22 @@ using UnityEngine.SceneManagement;
 public class SSceneM : MonoBehaviour
 {
     public static int num = 0;
-    public static string sceneName;
+    //public static string[] sceneNames = new string[] { "SceneNum0", "Subway", "classroom", "profroom2D", "Maze" };
+    string sceneName;
+
 
     // Start is called before the first frame update
     void Start()
     {
         num++;
-        sceneName = "SampleScene" + num; //scene 이름 수정
+        /*sceneName = sceneNames[num];*/ //scene 이름 수정
+        sceneName = "SceneNum" + num;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // 키 수정, 설명
+        if (Input.GetMouseButtonDown(1)) // 키 수정, 설명
         {
             Destroy(GameObject.Find("ScObj").gameObject);
             SceneManager.LoadScene(sceneName);

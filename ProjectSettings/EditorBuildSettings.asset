@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/profroom2Dexplain.unity
     guid: b6f72d5859b57b048a63a33cd1a71cc8
   - enabled: 1
-    path: Assets/Scenes/subway2D.unity
+    path: Assets/Scenes/SceneNum4.unity
     guid: 4cf6b8bd45b869645ac58c1d61c39614
   - enabled: 1
     path: Assets/Scenes/Score.unity
@@ -24,12 +24,12 @@ EditorBuildSettings:
     path: Assets/Scenes/StartMenu.unity
     guid: 0474858f4e96f69448f0ad9cee12b84b
   - enabled: 1
-    path: Assets/Scenes/classroom.unity
+    path: Assets/Scenes/SceneNum1.unity
     guid: bea7f25a8ad33104e89ca90109077744
   - enabled: 1
-    path: Assets/Scenes/Home.unity
+    path: Assets/Scenes/SceneNum5.unity
     guid: 75a670c77e8948c45966baf48895fd63
   - enabled: 1
-    path: Assets/Scenes/Subway.unity
+    path: Assets/Scenes/SceneNum0.unity
     guid: fde2aaea1799206419acd688e09de332
   m_configObjects: {}

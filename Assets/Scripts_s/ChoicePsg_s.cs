@@ -38,7 +38,7 @@ public class ChoicePsg_s : MonoBehaviour
                     chance = -1;
                     GameManager_s.gm.gameSuccess();
                 }
-                else
+                else if (hitInfo.collider.gameObject.tag=="On")
                 {
                     chance--;
                     if (chance == 2)

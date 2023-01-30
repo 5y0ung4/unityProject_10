@@ -19,6 +19,8 @@ public class Answer : MonoBehaviour
 
     public GameObject ChoiceWindow1;
 
+    
+
     //public GameObject changeImage_pr;
     //ChangeImage_pr chpr;
 
