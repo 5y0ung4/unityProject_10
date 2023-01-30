@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ButtonClick : MonoBehaviour
 {
@@ -85,9 +86,9 @@ public class ButtonClick : MonoBehaviour
 
         }
 
-        if (clickTime > 2)
+        else if (clickTime > 2)
         {
-
+            SceneManager.LoadScene("Subway2D");
         }
 
         clickTime += 1;
