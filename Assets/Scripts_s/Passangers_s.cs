@@ -9,10 +9,15 @@ public class Passangers_s : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        for(int i=0;i<passengers.Length;i++)
+        {
+            passengers[i].tag = "On";
+        }
+
         for(int i=0;i<5;i++)
         {
             int rand = Random.Range(0, passengers.Length);
-            if(passengers[rand].tag!="Off")
+            if(passengers[rand].tag=="On")
             {
                 passengers[rand].tag = "Off";
             }
