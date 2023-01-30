@@ -46,9 +46,8 @@ public class GameManager_s : MonoBehaviour
         ck = click.GetComponent<Image>();
         nb = nextBtn.GetComponent<Button>();
 
-        nextBtn.SetActive(false);
-
         click.SetActive(false);
+        nextBtn.SetActive(false);
 
         StartCoroutine(ReadyToRun()); // 게임 준비 -> 게임 시작
     }
@@ -212,6 +211,7 @@ public class GameManager_s : MonoBehaviour
         yield return new WaitForSeconds(4f);
 
         gameText.text = "룰루~\n학교 가는 발걸음이 가볍다 ㅎ.ㅎ";
+
         nextBtn.SetActive(true);
     }
 
