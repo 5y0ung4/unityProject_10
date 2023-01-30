@@ -96,9 +96,9 @@ public class CGameManager : MonoBehaviour
             loading = GameObject.Find("Canvas").transform.GetChild(9).gameObject;
             loading.SetActive(true);
 
-            gameText.text = "연구실로 이동 중";
+            gameText.text = "연구실로 이동 중\n\n<color=#FFFEC0>마우스 오른쪽 버튼을 누르면\n현재 스코어 확인 가능!</color>";
             gameText.color = new Color32(255, 255, 255, 255);
-            gameText.fontSize = 70;
+            gameText.fontSize = 60;
         }
     }
 

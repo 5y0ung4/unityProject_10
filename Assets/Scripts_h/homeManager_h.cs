@@ -11,7 +11,7 @@ public class homeManager_h : MonoBehaviour
     PlayerMove_h player;
     public GameObject chair;
 
-    int finalScore = SCScoreManager.Instance.WcurrentScore; // 최종 점수
+    int finalScore = SCScoreManager.WcurrentScore; // 최종 점수
 
     private void Awake()
     {
