@@ -25,6 +25,8 @@ public class homeManager_h : MonoBehaviour
 
     public GameObject background;
     Image bg;
+    public GameObject click;
+    Image ck;
 
     public GameObject getUpLabel;
     Text getUpText;
@@ -38,10 +40,12 @@ public class homeManager_h : MonoBehaviour
         ms = MorningState.Idle;
 
         bg = background.GetComponent<Image>();
+        ck = click.GetComponent<Image>();
         getUpText = getUpLabel.GetComponent<Text>();
         nb = nextBtn.GetComponent<Button>();
 
         nextBtn.SetActive(false);
+        click.SetActive(false);
 
         StartCoroutine(GetUp());
     }
@@ -77,6 +81,7 @@ public class homeManager_h : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
+        click.SetActive(true);
         getUpLabel.SetActive(false);
         ms = MorningState.Run;
     }
@@ -91,6 +96,7 @@ public class homeManager_h : MonoBehaviour
     {
         ms = MorningState.Idle;
 
+        click.SetActive(false);
         getUpLabel.SetActive(true);
         getUpText.text = "다이어리 여기있네.\n가만보자 오늘의 일정은~~";
 
@@ -124,6 +130,7 @@ public class homeManager_h : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
+        click.SetActive(true);
         getUpLabel.SetActive(false);
         ms = MorningState.Run;
     }
@@ -132,6 +139,7 @@ public class homeManager_h : MonoBehaviour
     {
         ms = MorningState.Idle;
 
+        click.SetActive(false);
         getUpLabel.SetActive(true);
         background.SetActive(true);
         bg.color = new Color32(0, 0, 0, 247);
@@ -146,6 +154,6 @@ public class homeManager_h : MonoBehaviour
 
     public void NextMap_btn()
     {
-        SceneManager.LoadScene("Subway");
+        SceneManager.LoadScene("SceneNum0");
     }
 }
