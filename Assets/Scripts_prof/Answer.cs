@@ -19,7 +19,11 @@ public class Answer : MonoBehaviour
 
     public GameObject ChoiceWindow1;
 
-    
+    public GameObject good;
+
+    public GameObject bad;
+
+
 
     //public GameObject changeImage_pr;
     //ChangeImage_pr chpr;
@@ -34,10 +38,13 @@ public class Answer : MonoBehaviour
         {
             //GetComponent<QuizManager>().ChoiceWindowRun();
             Debug.Log("정답입니다");
+            //GetComponent<QuizManager>().Good();
+            //good.SetActive(true);
             quizmanager.Next();
         }
         else 
         {
+            bad.SetActive(true);
             currentdegree -= likedegree;
             ldslider.value = (float)currentdegree / mxlikedegree;
 

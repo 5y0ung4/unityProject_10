@@ -22,6 +22,13 @@ public class QuizManager : MonoBehaviour
 
     public GameObject endGame;
 
+    public GameObject good;
+
+    public GameObject bad;
+
+
+    
+
     public string[] endText = 
         {"휴~ 무사히 상담을 마쳤다. " + System.Environment.NewLine +
                "교수님 기분이 웬지 좋아보이시는걸? " + System.Environment.NewLine +
@@ -39,7 +46,12 @@ public class QuizManager : MonoBehaviour
         
         endGame.SetActive(false);
 
-        makeQuestion();
+        good.SetActive(false);
+
+        bad.SetActive(false);
+
+
+    makeQuestion();
 
     }
 
@@ -104,6 +116,8 @@ public class QuizManager : MonoBehaviour
 
     public void Next()
     {
+        good.SetActive(false);
+        bad.SetActive(false);
         qna.RemoveAt(currentQuestion);
 
         makeQuestion();
@@ -123,4 +137,9 @@ public class QuizManager : MonoBehaviour
     //    else
     //        ChoiceWindow1.SetActive(false);
     //}
+
+    public void Good()
+    {
+        good.SetActive(true);
+    }
 }

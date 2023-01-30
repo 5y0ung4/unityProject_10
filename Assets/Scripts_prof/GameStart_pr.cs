@@ -13,14 +13,13 @@ public class GameStart_pr : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
 
-            BeforeGame.SetActive(false);
-            
-        }
+
+    
+
+    public void onClickButtonDown()
+    {
+        BeforeGame.SetActive(false);
     }
 
 }
