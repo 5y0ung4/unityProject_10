@@ -27,11 +27,11 @@ public class Sc3Obj : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.gm.gState == GameManager.GameState.Fail)
+        if (GameManager.gm.flag == false)
         {
             score = -15;
         }
-        else if (GameManager.gm.gState == GameManager.GameState.Success)
+        else if (GameManager.gm.flag == true)
         {
             score = 15;
         }

@@ -47,6 +47,11 @@ public class SCScoreManager : MonoBehaviour
             sceneScore = GameObject.Find("ScObj").GetComponent<Sc1Obj>().score;
             Sc1Obj.scene1 = false;
         }
+        else if (Sc3Obj.scene3)
+        {
+            sceneScore = GameObject.Find("ScObj").GetComponent<Sc3Obj>().score;
+            Sc3Obj.scene3 = false;
+        }
         else if (Sc4Obj.scene4)
         {
             sceneScore = GameObject.Find("ScObj").GetComponent<Sc4Obj>().score;

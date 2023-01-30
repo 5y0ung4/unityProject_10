@@ -86,10 +86,10 @@ public class ButtonClick : MonoBehaviour
 
         }
 
-        else if (clickTime > 2)
-        {
-            SceneManager.LoadScene("Subway2D");
-        }
+        //else if (clickTime > 2)
+        //{
+        //    SceneManager.LoadScene("Subway2D");
+        //}
 
         clickTime += 1;
 
