@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class CPlayerMove : MonoBehaviour
 {
+    public static CPlayerMove pm;
     public float speed = 5;
 
     public int score = 50;

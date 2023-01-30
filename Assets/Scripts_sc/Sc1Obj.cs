@@ -28,7 +28,14 @@ public class Sc1Obj : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        score = 35;
+        if (S2GameManager.gm.gState == S2GameManager.GameState.SuccessEnd)
+        {
+            score = 15;
+        }
+        else if (S2GameManager.gm.gState == S2GameManager.GameState.OverEnd)
+        {
+            score = -15;
+        }
         scene1 = true;
     }
 }

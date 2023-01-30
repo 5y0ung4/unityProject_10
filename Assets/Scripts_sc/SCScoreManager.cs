@@ -31,11 +31,11 @@ public class SCScoreManager : MonoBehaviour
             sceneScore = GameObject.Find("ScObj").GetComponent<Sc1Obj>().score;
             Sc1Obj.scene1 = false;
         }
-        //else if (Sc2ScObj.scene2)
-        //{
-        //    sceneScore = GameObject.Find("ScObj").GetComponent<Sc2ScObj>().score;
-        //    Sc2ScObj.scene2 = false;
-        //}
+        else if (Sc2Obj.scene2)
+        {
+            sceneScore = GameObject.Find("ScObj").GetComponent<Sc2Obj>().score;
+            Sc2Obj.scene2 = false;
+        }
 
         if (count == false)
         {
@@ -47,11 +47,11 @@ public class SCScoreManager : MonoBehaviour
 
         if (sceneScore >= 0)
         {
-            text.text = "»ÑµíÇÔ " + sceneScore + "Á¡ »ó½Â!" + WcurrentScore;
+            text.text = "»ÑµíÇÔ " + sceneScore + "Á¡ »ó½Â! ^.^" + WcurrentScore; // ÇöÀç ½ºÄÚ¾î Áö¿ì±â
         }
         else if (sceneScore < 0)
         {
-            text.text = "ÇÇ°ïÇÔ " + Mathf.Abs(sceneScore) + "Á¡ »ó½Â!" + WcurrentScore;
+            text.text = "ÇÇ°ïÇÔ " + Mathf.Abs(sceneScore) + "Á¡ »ó½Â! T.T" + WcurrentScore;
         }
     }
 }
