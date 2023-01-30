@@ -36,6 +36,8 @@ public class Sc0Obj : MonoBehaviour
         {
             score = 15;
         }
+
+        //score = 15;
         scene0 = true;
     }
 }

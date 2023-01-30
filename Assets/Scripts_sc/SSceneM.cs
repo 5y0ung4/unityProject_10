@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SSceneM : MonoBehaviour
 {
     public static int num = 0;
-    public static string[] sceneNames = new string[] { "SceneNum0", "Subway", "classroom", "profroom2D", "Maze" };
+    //public static string[] sceneNames = new string[] { "SceneNum0", "Subway", "classroom", "profroom2D", "Maze" };
     string sceneName;
 
 
@@ -14,7 +14,8 @@ public class SSceneM : MonoBehaviour
     void Start()
     {
         num++;
-        sceneName = sceneNames[num]; //scene 이름 수정
+        /*sceneName = sceneNames[num];*/ //scene 이름 수정
+        sceneName = "SceneNum" + num;
     }
 
     // Update is called once per frame

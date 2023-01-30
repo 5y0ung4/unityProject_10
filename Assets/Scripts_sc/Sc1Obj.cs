@@ -77,6 +77,7 @@ public class Sc1Obj : MonoBehaviour
         else
             return;
 
+        //score = 10;
         scene1 = true;
     }
 }
