@@ -110,9 +110,9 @@ public class homeManager_h : MonoBehaviour
 
         yield return new WaitForSeconds(4f);
 
-        getUpText.text = "오늘은 좀 바쁜 하루가 되겠어!\n어서 나갈 준비를 해야지.";
+        getUpText.text = "오늘은 좀 바쁜 하루가 되겠네!\n어서 나갈 준비 해야겠다";
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2.5f);
 
         getUpText.text = "~ 외출 준비중 ~";
 

@@ -57,7 +57,7 @@ public class GameManager_s : MonoBehaviour
 
         yield return new WaitForSeconds(2.5f);
 
-        gameText.text = "흠..\n내릴 것 같은 사람 앞에 서있어보자!";
+        gameText.text = "흠..\n내릴 것 같은 사람 앞에 서 있어보자!";
 
         yield return new WaitForSeconds(2.5f);
 
@@ -122,7 +122,7 @@ public class GameManager_s : MonoBehaviour
         background.SetActive(true);
         gameText.color = new Color32(237, 0, 109, 255);
 
-        gameText.text = "Game Over\n당신은 서서 가야합니다...";
+        gameText.text = "Game Over\n힘들게 서서 가야하겠네요...";
 
         gs = GameState.Fail;
 
