@@ -191,7 +191,7 @@ public class GameManager : MonoBehaviour
         {
 
             gameLabel.SetActive(false);
-            buttonScript.Button.SetActive(true);
+            //buttonScript.Button.SetActive(true);
 
             buttonScript.ImageBackg.SetActive(true);
 

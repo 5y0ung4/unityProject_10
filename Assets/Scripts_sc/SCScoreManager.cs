@@ -69,11 +69,11 @@ public class SCScoreManager : MonoBehaviour
 
         if (sceneScore >= 0)
         {
-            text.text = "뿌듯함 " + sceneScore + "점 상승! ^.^" + WcurrentScore; // 현재 스코어 지우기
+            text.text = "<color=#EC465C>뿌듯함</color> " + sceneScore + "<color=#07CBB6>점</color>\n상승! <color=#07CBB6>^.^</color>";
         }
         else if (sceneScore < 0)
         {
-            text.text = "피곤함 " + Mathf.Abs(sceneScore) + "점 상승! T.T" + WcurrentScore;
+            text.text = "<color=#EC465C>피곤함</color> " + Mathf.Abs(sceneScore) + "<color=#07CBB6>점</color>\n상승! <color=#07CBB6>T.T</color>";
         }
     }
 }
