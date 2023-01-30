@@ -12,13 +12,13 @@ public class SSceneM : MonoBehaviour
     void Start()
     {
         num++;
-        sceneName = "SampleScene" + num; //scene 이름 수정
+        sceneName = "SceneNum" + num; //scene 이름 수정
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // 키 수정, 설명
+        if (Input.GetMouseButtonDown(1)) // 키 수정, 설명
         {
             Destroy(GameObject.Find("ScObj").gameObject);
             SceneManager.LoadScene(sceneName);

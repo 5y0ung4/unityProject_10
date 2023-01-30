@@ -26,16 +26,22 @@ public class SCScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Sc1Obj.scene1)
+        if (Sc0Obj.scene0)
+        {
+            sceneScore = GameObject.Find("ScObj").GetComponent<Sc0Obj>().score;
+            Sc0Obj.scene0 = false;
+        }
+        else if (Sc1Obj.scene1)
         {
             sceneScore = GameObject.Find("ScObj").GetComponent<Sc1Obj>().score;
             Sc1Obj.scene1 = false;
         }
-        else if (Sc2Obj.scene2)
+        else if (Sc4Obj.scene4)
         {
-            sceneScore = GameObject.Find("ScObj").GetComponent<Sc2Obj>().score;
-            Sc2Obj.scene2 = false;
+            sceneScore = GameObject.Find("ScObj").GetComponent<Sc4Obj>().score;
+            Sc4Obj.scene4 = false;
         }
+        
 
         if (count == false)
         {
