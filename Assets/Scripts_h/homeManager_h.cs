@@ -100,7 +100,7 @@ public class homeManager_h : MonoBehaviour
         bg.color = new Color32(0, 0, 0, 247);
         getUpText.color = new Color32(255, 133, 202, 255);
         getUpText.text = "<김슈니의 다이어리>\n2023.?.?\n\n1. 1-2교시 대면수업 : 50주년 기념관\n" +
-            "2. 점심시간 : 교수님과 식사&면담\n3. 5-6교시 대면수업 in 제2과학관";
+            "2. 점심시간 : 교수님과 식사&면담\n3. 5-6교시 대면수업 : 제2과학관";
 
         yield return new WaitForSeconds(7f);
 
