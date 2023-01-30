@@ -11,6 +11,7 @@ public class PrDialogue1 : MonoBehaviour
     public Button ButtonC;
 
 
+
     public int likedegree=10;
 
     public int mxlikedegree = 100;
@@ -19,9 +20,13 @@ public class PrDialogue1 : MonoBehaviour
 
     public Slider ldslider;
 
+    public GameObject ChoiceWindow;
 
 
-    //public GameObject ChangeImage_pr;
+    public GameObject changeImage_pr;
+    ChangeImage_pr chpr;
+
+
     //Image thisImg;
 
     private void Start()
@@ -33,36 +38,63 @@ public class PrDialogue1 : MonoBehaviour
         ButtonC.onClick.AddListener(OnClickButtonC);
 
 
-
-
-        void OnClickButtonA()
-        {
-            
-            labelStartText.text = "그래. 잘 지냈니?";
-            //ChangeImage_pr.GetComponent<ChangeImage_pr>().ChangeImage1();
-           
-            currentdegree= likedegree--;
-           ldslider.value = (float)likedegree / mxlikedegree;
-
-            
-        }
-
-        void OnClickButtonB()
-        {
-            
-            labelStartText.text = "허허. 미안하구나.";
-            currentdegree = likedegree--;
-            ldslider.value = (float)likedegree / mxlikedegree;
-        }
-
-        void OnClickButtonC()
-        {
-
-            labelStartText.text = "그래 씩씩하구나. 아주 좋아!";
-            
-        }
+        currentdegree = mxlikedegree;
+        //chpr = GetComponent<ChangeImage_pr>();
+        chpr =GameObject.Find("smile_prof").GetComponent<ChangeImage_pr>();
+        
 
     }
 
-   
+    public void OnClickButtonA()
+    {
+
+        //for (i = 0; i < questionarray.Length; i++)
+        //{
+        //    labelStartText.text = questionarray[i];
+        //    //yield return new WaitUntil(ChoiceWindow = true);
+        //}
+        
+        
+        
+        changeImage_pr.GetComponent<ChangeImage_pr>().ChangeImage1();
+        chpr.ChangeImage1();
+
+        currentdegree -= likedegree;
+        ldslider.value = (float)currentdegree / mxlikedegree;
+
+        ChoiceWindow.SetActive(false);
+
+
+
+
+
+    }
+
+    public void OnClickButtonB()
+    {
+       
+
+
+        //labelStartText.text = questionarray[0];
+        //currentdegree = likedegree--;
+        changeImage_pr.GetComponent<ChangeImage_pr>().ChangeImage2();
+
+        currentdegree -= likedegree;
+        ldslider.value = (float)currentdegree / mxlikedegree;
+
+        ChoiceWindow.SetActive(false);
+
+    }
+
+    public void OnClickButtonC()
+    {
+
+       // labelStartText.text = "그래 씩씩하구나. 아주 좋아!";
+
+        ChoiceWindow.SetActive(false);
+
+
+
+    }
+
 }
