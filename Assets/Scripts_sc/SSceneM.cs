@@ -6,13 +6,15 @@ using UnityEngine.SceneManagement;
 public class SSceneM : MonoBehaviour
 {
     public static int num = 0;
-    public static string sceneName;
+    public static string[] sceneNames = new string[] { "SceneNum0", "Subway", "classroom", "profroom2D", "Maze" };
+    string sceneName;
+
 
     // Start is called before the first frame update
     void Start()
     {
         num++;
-        sceneName = "SceneNum" + num; //scene 이름 수정
+        sceneName = sceneNames[num]; //scene 이름 수정
     }
 
     // Update is called once per frame
