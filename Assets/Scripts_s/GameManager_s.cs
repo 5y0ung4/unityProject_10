@@ -19,7 +19,9 @@ public class GameManager_s : MonoBehaviour
     public enum GameState
     {
         Ready,
-        Run
+        Run,
+        Success,
+        Fail
     }
     public GameState gs;
 
@@ -122,7 +124,7 @@ public class GameManager_s : MonoBehaviour
 
         gameText.text = "Game Over\n당신은 서서 가야합니다...";
 
-        gs = GameState.Ready;
+        gs = GameState.Fail;
 
         StartCoroutine(EndToFail());
     }
@@ -166,7 +168,7 @@ public class GameManager_s : MonoBehaviour
 
         gameText.text = "정답!\n앉아서 가기 성공!";
 
-        gs = GameState.Ready;
+        gs = GameState.Success;
 
         StartCoroutine(EndToSuccess());
     }

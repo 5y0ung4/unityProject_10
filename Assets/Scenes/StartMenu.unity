@@ -377,8 +377,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\U0001F90D\U0001F90D\u2661 \uC288\uB2C8\uC758 \uAC13\uC0DD \uD504\uB85C\uC81D\uD2B8
-    \u2661"
+  m_Text: "SWU Life \n\uC288\uB77C\uC774\uD504"
 --- !u!222 &479749365
 CanvasRenderer:
   m_ObjectHideFlags: 0
