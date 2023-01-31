@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SSceneM : MonoBehaviour
 {
     public static int num = 0;
-    public static string[] sceneNames = new string[] { "SceneNum0", "Subway", "classroom", "profroom2D", "Maze" };
+    public static string[] sceneNames = new string[] { "Subway", "classroom", "profroom2D", "Maze" };
     string sceneName;
 
 
