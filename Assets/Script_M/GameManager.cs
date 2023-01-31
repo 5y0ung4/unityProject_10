@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
 
     ButtonClick buttonScript;
 
+    public bool flag = false;
+
     private void Awake()
     {
         if (gm == null)
@@ -153,6 +155,8 @@ public class GameManager : MonoBehaviour
             gameOverImage.SetActive(true);
             //player.GetComponentInChildren<Animator>().SetFloat("MoveMotion", 0f);
 
+            flag = true;
+
             gameLabel.SetActive(true);
 
             gameText.text = "제 시간에 도착했다!";
@@ -170,6 +174,8 @@ public class GameManager : MonoBehaviour
             gameOverImage.SetActive(true);
             //player.GetComponentInChildren<Animator>().SetFloat("MoveMotion", 0f);
 
+            flag = false;
+
             gameLabel.SetActive(true);
 
             gameText.text = "제 시간에 찾아가기 실패.";
@@ -185,7 +191,7 @@ public class GameManager : MonoBehaviour
         {
 
             gameLabel.SetActive(false);
-            buttonScript.Button.SetActive(true);
+            //buttonScript.Button.SetActive(true);
 
             buttonScript.ImageBackg.SetActive(true);
 

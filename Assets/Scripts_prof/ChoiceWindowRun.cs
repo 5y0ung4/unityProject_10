@@ -4,30 +4,28 @@ using UnityEngine;
 
 public class ChoiceWindowRun : MonoBehaviour
 {
-    public GameObject ChoiceWindow;
+    public GameObject ChoiceWindow1;
+   
 
     // Start is called before the first frame update
     void Start()
     {
-        ChoiceWindow.SetActive(false);
+        //ChoiceWindow1.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        while (true)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-
-                ChoiceWindow.SetActive(true);
-            }
-        }
+        
+        
        
     }
 
-    //void OnMouseDown()
-    //{
-       
-    //}
+    public void OnMouseDown()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            ChoiceWindow1.SetActive(true);
+        }
+    }
 }

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class GameManager_s : MonoBehaviour
 {
@@ -33,9 +32,6 @@ public class GameManager_s : MonoBehaviour
     public GameObject click;
     Image ck;
 
-    public GameObject nextBtn;
-    Button nb;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -44,10 +40,8 @@ public class GameManager_s : MonoBehaviour
         gameText = gameLabel.GetComponent<Text>();
         bg = background.GetComponent<Image>();
         ck = click.GetComponent<Image>();
-        nb = nextBtn.GetComponent<Button>();
 
         click.SetActive(false);
-        nextBtn.SetActive(false);
 
         StartCoroutine(ReadyToRun()); // 게임 준비 -> 게임 시작
     }
@@ -166,8 +160,8 @@ public class GameManager_s : MonoBehaviour
 
         yield return new WaitForSeconds(3.5f);
 
-        gameText.text = "어휴 피곤해... \n학교나 가자..";
-        nextBtn.SetActive(true);
+        gameText.text = "마우스 오른쪽 버튼을 누르면\n현재 스코어 확인 가능!";
+        gameText.color = new Color32(181, 178, 255, 255);
     }
 
     public void gameSuccess() // 게임 성공
@@ -201,22 +195,17 @@ public class GameManager_s : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        gameText.text = "이제 곧 내린다!\n내릴 준비 해야지.";
+        gameText.text = "이제 곧 내린다!\n내릴 준비 해야지";
         gameText.color = new Color32(178, 204, 255, 255);
 
         yield return new WaitForSeconds(3.5f);
 
-        gameText.text = "그래도 앉아서 갔더니 훨씬 덜 피곤한 것 같네.\n수업 들을 때 집중 잘되겠다!\n졸지 말고 열심히 들어야지 ㅎㅎ";
+        gameText.text = "그래도 앉아서 갔더니 훨씬 덜 피곤한 것 같네.\n컨디션 좋게 수업 들을 수 있겠다!";
 
         yield return new WaitForSeconds(4f);
 
-        gameText.text = "룰루~\n학교 가는 발걸음이 가볍다 ㅎ.ㅎ";
-
-        nextBtn.SetActive(true);
+        gameText.text = "마우스 오른쪽 버튼을 누르면\n현재 스코어 확인 가능!";
+        gameText.color = new Color32(181, 178, 255, 255);
     }
 
-    public void nextMap_btn()
-    {
-        SceneManager.LoadScene("SceneNum1");
-    }
 }

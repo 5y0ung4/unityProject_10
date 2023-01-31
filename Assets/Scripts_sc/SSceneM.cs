@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SSceneM : MonoBehaviour
 {
     public static int num = 0;
-    public static string[] sceneNames = new string[] { "Subway", "classroom", "profroom2D", "Maze" };
+    //public static string[] sceneNames = new string[] { "SceneNum0", "Subway", "classroom", "profroom2D", "Maze" };
     string sceneName;
 
 
@@ -14,13 +14,14 @@ public class SSceneM : MonoBehaviour
     void Start()
     {
         num++;
-        sceneName = sceneNames[num]; //scene ÀÌ¸§ ¼öÁ¤
+        /*sceneName = sceneNames[num];*/ //scene ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½
+        sceneName = "SceneNum" + num;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1)) // Å° ¼öÁ¤, ¼³¸í
+        if (Input.GetMouseButtonDown(1)) // Å° ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½
         {
             Destroy(GameObject.Find("ScObj").gameObject);
             SceneManager.LoadScene(sceneName);

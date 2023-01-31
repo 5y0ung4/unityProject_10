@@ -8,6 +8,11 @@ public class homeManager_h : MonoBehaviour
 {
     public static homeManager_h hm;
 
+    PlayerMove_h player;
+    public GameObject chair;
+
+    int finalScore = SCScoreManager.WcurrentScore; // 최종 점수
+
     private void Awake()
     {
         if (hm == null)
@@ -30,6 +35,8 @@ public class homeManager_h : MonoBehaviour
 
     public GameObject getUpLabel;
     Text getUpText;
+    public GameObject endingLabel;
+    Text ending;
 
     public GameObject nextBtn;
     Button nb;
@@ -37,17 +44,35 @@ public class homeManager_h : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ms = MorningState.Idle;
+        player = GameObject.Find("Player").GetComponent<PlayerMove_h>();
 
         bg = background.GetComponent<Image>();
         ck = click.GetComponent<Image>();
         getUpText = getUpLabel.GetComponent<Text>();
+        ending = endingLabel.GetComponent<Text>();
         nb = nextBtn.GetComponent<Button>();
 
         nextBtn.SetActive(false);
         click.SetActive(false);
 
-        StartCoroutine(GetUp());
+        if (finalScore > 0) // 집이 스타트가 아닌 엔딩이라면
+        {
+            if (finalScore >= 75)
+            {
+                worth();
+            }
+            else
+            {
+                tired();
+            }
+        }
+        else // 집에서 스타트
+        {
+            ms = MorningState.Idle;
+
+            StartCoroutine(GetUp());
+        }
+
     }
 
     public IEnumerator GetUp()
@@ -89,7 +114,7 @@ public class homeManager_h : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     public IEnumerator findDiary()
@@ -155,5 +180,44 @@ public class homeManager_h : MonoBehaviour
     public void NextMap_btn()
     {
         SceneManager.LoadScene("SceneNum0");
+    }
+
+    void worth() // 뿌듯게이지 > 피곤게이지
+    {
+        player.transform.position = chair.transform.position; // 플레이어 이동시키기
+
+        ms = MorningState.Idle;
+        StartCoroutine(writeDiary());
+    }
+    IEnumerator writeDiary()
+    {
+        yield return new WaitForSeconds(2.5f);
+
+        background.SetActive(true);
+        bg.color = new Color32(0, 0, 0, 247);
+        ending.color = new Color32(255, 255, 255, 255);
+        ending.text = "오늘도 하루의 끝이 다가왔다.\n오늘의 나는 정말 열정적이었어.";
+
+        yield return new WaitForSeconds(3f);
+
+        ending.text = "최근들어 가장 뿌듯한 날이 바로 오늘인 것 같다.\n이런 날엔 일기를 꼭 써줘야지!";
+
+        yield return new WaitForSeconds(3f);
+
+        ending.text = " ~ 일기 쓰는 중 ~";
+        yield return new WaitForSeconds(2f);
+
+        ending.text = "휴 다 썼다!\n오늘같은 날이 많았으면 좋겠네~\n내일도 열심히 살자!";
+
+    }
+
+    void tired() // 피곤게이지 > 뿌듯게이지
+    {
+        ms = MorningState.Idle;
+
+        background.SetActive(true);
+        bg.color = new Color32(0, 0, 0, 255);
+        ending.color = new Color32(201, 0, 73, 255);
+        ending.text = "Black Out\n\n플레이어는 피곤에 찌든 나머지\n집에 도착하자마자 기절해버렸습니다.";
     }
 }

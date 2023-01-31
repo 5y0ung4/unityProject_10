@@ -8,7 +8,7 @@ public class SCScoreManager : MonoBehaviour
     public static SCScoreManager Instance;
     public Slider WscoreSlider;
     int WmaxScore = 150;
-    public int WcurrentScore = 75;
+    public static int WcurrentScore = 75;
     // 감소 폭 각 스크립트에서 지정
 
     public Text text;
@@ -17,6 +17,17 @@ public class SCScoreManager : MonoBehaviour
 
     bool count = false;
 
+    //private void Awake()
+    //{
+    //    if (Instance != null)
+    //    {
+    //        Destroy(gameObject);
+    //        return;
+    //    }
+    //    Instance = this;
+    //    DontDestroyOnLoad(gameObject);
+    //}
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +47,11 @@ public class SCScoreManager : MonoBehaviour
             sceneScore = GameObject.Find("ScObj").GetComponent<Sc1Obj>().score;
             Sc1Obj.scene1 = false;
         }
+        else if (Sc3Obj.scene3)
+        {
+            sceneScore = GameObject.Find("ScObj").GetComponent<Sc3Obj>().score;
+            Sc3Obj.scene3 = false;
+        }
         else if (Sc4Obj.scene4)
         {
             sceneScore = GameObject.Find("ScObj").GetComponent<Sc4Obj>().score;
@@ -53,11 +69,11 @@ public class SCScoreManager : MonoBehaviour
 
         if (sceneScore >= 0)
         {
-            text.text = "뿌듯함 " + sceneScore + "점 상승! ^.^" + WcurrentScore; // 현재 스코어 지우기
+            text.text = "<color=#EC465C>뿌듯함</color> " + sceneScore + "<color=#07CBB6>점</color>\n상승! <color=#07CBB6>^.^</color>";
         }
         else if (sceneScore < 0)
         {
-            text.text = "피곤함 " + Mathf.Abs(sceneScore) + "점 상승! T.T" + WcurrentScore;
+            text.text = "<color=#EC465C>피곤함</color> " + Mathf.Abs(sceneScore) + "<color=#07CBB6>점</color>\n상승! <color=#07CBB6>T.T</color>";
         }
     }
 }
