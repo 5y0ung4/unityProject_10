@@ -55,9 +55,9 @@ public class homeManager_h : MonoBehaviour
         nextBtn.SetActive(false);
         click.SetActive(false);
 
-        if (finalScore > 0) // 집이 스타트가 아닌 엔딩이라면
+        if (finalScore != 75) // 집이 스타트가 아닌 엔딩이라면
         {
-            if (finalScore >= 75)
+            if (finalScore > 75)
             {
                 worth();
             }

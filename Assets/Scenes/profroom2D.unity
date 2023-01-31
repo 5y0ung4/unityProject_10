@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731703, g: 0.13414727, b: 0.12107852, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -360,6 +360,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quizmanager: {fileID: 1824068529}
   isCorrect: 0
+  likedegree: 10
+  mxlikedegree: 100
+  currentdegree: 0
   ldslider: {fileID: 943717079}
   ChoiceWindow1: {fileID: 505508819}
   good: {fileID: 405348411}
@@ -658,6 +661,51 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &203756860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 203756862}
+  - component: {fileID: 203756861}
+  m_Layer: 0
+  m_Name: ScObj
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &203756861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203756860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee469b349b2bb6347a7935c4d4e5e2a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  ldslider: {fileID: 943717079}
+--- !u!4 &203756862
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203756860}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &232221361
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,6 +739,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quizmanager: {fileID: 1824068529}
   isCorrect: 0
+  likedegree: 10
+  mxlikedegree: 100
+  currentdegree: 0
   ldslider: {fileID: 943717079}
   ChoiceWindow1: {fileID: 505508819}
   good: {fileID: 405348411}
@@ -1130,6 +1181,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quizmanager: {fileID: 1824068529}
   isCorrect: 0
+  likedegree: 10
+  mxlikedegree: 100
+  currentdegree: 0
   ldslider: {fileID: 943717079}
   ChoiceWindow1: {fileID: 505508819}
   good: {fileID: 405348411}
@@ -1916,6 +1970,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quizmanager: {fileID: 1824068529}
   isCorrect: 0
+  likedegree: 10
+  mxlikedegree: 100
+  currentdegree: 0
   ldslider: {fileID: 943717079}
   ChoiceWindow1: {fileID: 505508819}
   good: {fileID: 0}
@@ -2602,6 +2659,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quizmanager: {fileID: 1824068529}
   isCorrect: 0
+  likedegree: 10
+  mxlikedegree: 100
+  currentdegree: 0
   ldslider: {fileID: 943717079}
   ChoiceWindow1: {fileID: 505508819}
   good: {fileID: 405348411}
@@ -3593,9 +3653,6 @@ MonoBehaviour:
   endGame: {fileID: 601989750}
   good: {fileID: 405348411}
   bad: {fileID: 232221361}
-  likedegree: 10
-  mxlikedegree: 100
-  currentdegree: 0
   endText:
   - "\uD734~ \uBB34\uC0AC\uD788 \uC0C1\uB2F4\uC744 \uB9C8\uCCE4\uB2E4. \r\n\uAD50\uC218\uB2D8
     \uAE30\uBD84\uC774 \uC6EC\uC9C0 \uC88B\uC544\uBCF4\uC774\uC2DC\uB294\uAC78? \r\n\uAE30\uBD84\uC88B\uAC8C
@@ -3853,6 +3910,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1875763938}
   m_CullTransparentMesh: 1
+--- !u!1 &1919370236
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1919370238}
+  - component: {fileID: 1919370237}
+  m_Layer: 0
+  m_Name: SceneM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1919370237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919370236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbfedbd0382fcb34a9ce8a78dc1129c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1919370238
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919370236}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1946178032
 GameObject:
   m_ObjectHideFlags: 0
@@ -4031,6 +4131,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quizmanager: {fileID: 1824068529}
   isCorrect: 0
+  likedegree: 10
+  mxlikedegree: 100
+  currentdegree: 0
   ldslider: {fileID: 943717079}
   ChoiceWindow1: {fileID: 505508819}
   good: {fileID: 405348411}
@@ -4129,6 +4232,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quizmanager: {fileID: 1824068529}
   isCorrect: 0
+  likedegree: 10
+  mxlikedegree: 100
+  currentdegree: 0
   ldslider: {fileID: 943717079}
   ChoiceWindow1: {fileID: 0}
   good: {fileID: 0}

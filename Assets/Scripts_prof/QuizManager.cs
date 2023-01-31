@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class QuizManager : MonoBehaviour
 {
+    //public static QuizManager qm;
+
     public Answer answer;
     public Slider ldslider;
 
