@@ -7,9 +7,9 @@ public class MoveToGame : MonoBehaviour
 {
     public void SceneChange()
     {
-        GameObject ScObj = GameObject.Find("ScObj").gameObject;
+        //GameObject ScObj = GameObject.Find("ScObj").gameObject;
 
-        Destroy(ScObj);
+        //Destroy(ScObj);
         SceneManager.LoadScene("profroom2D");
     }
     // Start is called before the first frame update

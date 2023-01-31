@@ -43,10 +43,10 @@ public class Sc2Obj : MonoBehaviour
         {
             score = -15;
         }
-        else
-        {
-            return;
-        }
+        //else
+        //{
+        //    return;
+        //}
         
         scene2 = true;
     }
