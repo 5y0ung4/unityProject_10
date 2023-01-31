@@ -163,7 +163,7 @@ public class GameManager : MonoBehaviour
 
             gameText.color = new Color32(255, 255, 255, 255);
 
-            buttonScript.describeText.text = "게임 성공! \n지각도 하지 않았고, 머리에 아주 잘 들어오게 강의해 주셔서 집중이 아주 잘 되었다. \n모든 강의가 끝났으니 지하철을 타러 가 볼까?";
+            buttonScript.describeText.text = "게임 성공! \n지각도 하지 않았고, 머리에 아주 잘 들어오게 강의해 주셔서 집중이 아주 잘 되었다. \n모든 강의가 끝났으니 지하철을 타러 가 볼까? \n(마우스 우클릭을 누르면 현재 스코어를 확인할 수 있다.)";
 
             StartCoroutine(ToGameOver());
         }
@@ -180,7 +180,7 @@ public class GameManager : MonoBehaviour
 
             gameText.text = "제 시간에 찾아가기 실패.";
 
-            buttonScript.describeText.text = "게임 실패. 열심히 뛰었지만 지각했다. \n그래도 수업은 열심히 들었지만, 왠지 오늘은 집에 빨리 가서 쉬고 싶다. \n모든 강의가 끝났으니 지하철을 타러 가자.";
+            buttonScript.describeText.text = "게임 실패. 열심히 뛰었지만 지각했다. \n그래도 수업은 열심히 들었지만, 왠지 오늘은 집에 빨리 가서 쉬고 싶다. \n모든 강의가 끝났으니 지하철을 타러 가자. \n(마우스 우클릭을 누르면 현재 스코어를 확인할 수 있다.)";
 
             gameText.color = new Color32(255, 255, 255, 255);
 
@@ -234,7 +234,7 @@ public class GameManager : MonoBehaviour
         {
             gameLabel2.SetActive(true);
 
-            addText.text = "외부인이 길을 물어온다. 거절하지 못하고 알려 줬다. \n(- 7초, 갓생 게이지 증가)";
+            addText.text = "외부인이 길을 물어온다. 거절하지 못하고 알려 줬다. \n(- 7초)";
 
             player.time -= 7;
 
