@@ -26,8 +26,14 @@ public class QuizManager : MonoBehaviour
 
     public GameObject bad;
 
+    //public int likedegree = 10;
+
+    //public int mxlikedegree = 100;
+
+    //public int currentdegree;
 
     
+
 
     public string[] endText = 
         {"휴~ 무사히 상담을 마쳤다. " + System.Environment.NewLine +
@@ -36,7 +42,7 @@ public class QuizManager : MonoBehaviour
 
         "휴~ 무사히 상담을 마쳤다." + System.Environment.NewLine +
                     "교수님 기분이 안 좋아지신 것 같은데.." + System.Environment.NewLine +
-                    "일단 강의실로 가자."};
+                    "일단 수업을 들어야하니 강의실로 가자."};
 
     //public AudioClip audio;
 
@@ -46,9 +52,13 @@ public class QuizManager : MonoBehaviour
         
         endGame.SetActive(false);
 
-        good.SetActive(false);
+        if(good.activeSelf && bad.activeSelf)
+        {
+            good.SetActive(false);
 
-        bad.SetActive(false);
+            bad.SetActive(false);
+        }
+        
 
 
     makeQuestion();
@@ -63,59 +73,75 @@ public class QuizManager : MonoBehaviour
 
     public void makeQuestion()
     {
-        
-        if (qna.Count >0)
+
+        if (qna.Count > 0)
         {
-        currentQuestion = Random.Range(0, qna.Count);
-
-        QuestionText.text = qna[currentQuestion].question;
-
-
-        setAnswer();
+            currentQuestion = Random.Range(0, qna.Count);
+            QuestionText.text = qna[currentQuestion].question;
+            setAnswer();
         }
         else
         {
-            endGame.SetActive(true);
-
+           
             if (ldslider.value > 30)
             {
                 Debug.Log("컴포넌트1불러옴");
+                endGame.SetActive(true);
                 Endgame.text = endText[0];
                 //Debug.Log(endText[0]);
             }
             else
             {
                 Debug.Log("컴포넌트2불러옴");
+                endGame.SetActive(true);
                 //Debug.Log(endText[1]);
                 Endgame.text = endText[1];
                 //Endgame.text = endText[1];
             }
+        }
+
+           
 
                 
-        }
+        
 
     }
 
 
     void setAnswer()
     {
-        for(int i = 0; i < options.Length; i++)
-        {
-            //options[i].GetComponent<Text>().text=
-            //options[i].GetComponent<Answer>().iswrong = false;
-            //options[i].transform.GetChild(0).GetComponent<Text>().text = qna[i].Answers[i];
-            
-           options[i].transform.GetChild(0).GetComponent<Text>().text = qna[currentQuestion].Answers[i];
+        //for(int i = 0; i <= options.Length; i++)
+        //{
+        //    //options[i].GetComponent<Text>().text=
+        //    //options[i].GetComponent<Answer>().iswrong = false;
+        //    //options[i].transform.GetChild(0).GetComponent<Text>().text = qna[i].Answers[i];
+        //   options[i].GetComponent<Answer>().isCorrect = false; 
+        //   options[i].transform.GetChild(0).GetComponent<Text>().text = qna[currentQuestion].Answers[i];
+        //    //options[i].transform.Find("ButtonA").GetComponent<Text>().text = qna[currentQuestion].Answers[i];
 
-            if (qna[i].correctAnswer == i)
+        //    //options[i].GetComponent<Answer>().isCorrect = true;
+
+        //    if (qna[currentQuestion].correctAnswer == i)
+        //    {
+        //        options[i].GetComponent<Answer>().isCorrect = true;
+        //    }
+        //}
+
+        foreach(GameObject go in options)
+        {
+            go.GetComponent<Answer>().isCorrect = false;
+            go.transform.GetChild(0).GetComponent<Text>().text = qna[currentQuestion].Answers[i++];
+            
+            if (qna[currentQuestion].correctAnswer == i)
             {
-                options[i].GetComponent<Answer>().isCorrect = true;
+                go.GetComponent<Answer>().isCorrect = true;
             }
         }
     }
 
     public void Next()
     {
+        i = 0;
         good.SetActive(false);
         bad.SetActive(false);
         qna.RemoveAt(currentQuestion);
