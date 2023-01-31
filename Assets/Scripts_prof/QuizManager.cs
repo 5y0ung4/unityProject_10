@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class QuizManager : MonoBehaviour
 {
-    public Answer answer;
+   // public Answer answer;
     public Slider ldslider;
 
     public List<QuestionAndAnswer> qna;
@@ -26,23 +26,24 @@ public class QuizManager : MonoBehaviour
 
     public GameObject bad;
 
-    //public int likedegree = 10;
+    public int likedegree = 10;
 
-    //public int mxlikedegree = 100;
+    public int mxlikedegree = 100;
 
-    //public int currentdegree;
+    public int currentdegree;
 
-    
+    public GameObject an;
+    Answer answer;
 
 
     public string[] endText = 
-        {"ÈÞ~ ¹«»çÈ÷ »ó´ãÀ» ¸¶ÃÆ´Ù. " + System.Environment.NewLine +
-               "±³¼ö´Ô ±âºÐÀÌ À¢Áö ÁÁ¾Æº¸ÀÌ½Ã´Â°É? " + System.Environment.NewLine +
-               "±âºÐÁÁ°Ô °­ÀÇ½Ç¿¡ °¥ ¼ö ÀÖ°Ú´Ù.",
+        {"ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½!"+ System.Environment.NewLine + "ï¿½ï¿½~ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ´ï¿½. " + System.Environment.NewLine +
+               "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æºï¿½ï¿½Ì½Ã´Â°ï¿½? " + System.Environment.NewLine +
+               "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½Ç¿ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö°Ú´ï¿½." ,
 
-        "ÈÞ~ ¹«»çÈ÷ »ó´ãÀ» ¸¶ÃÆ´Ù." + System.Environment.NewLine +
-                    "±³¼ö´Ô ±âºÐÀÌ ¾È ÁÁ¾ÆÁö½Å °Í °°Àºµ¥.." + System.Environment.NewLine +
-                    "ÀÏ´Ü ¼ö¾÷À» µé¾î¾ßÇÏ´Ï °­ÀÇ½Ç·Î °¡ÀÚ."};
+        "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!" + System.Environment.NewLine + "ï¿½ï¿½~ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ´ï¿½." + System.Environment.NewLine +
+                    "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.." + System.Environment.NewLine +
+                    "ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½Ç½Ç·ï¿½ ï¿½ï¿½ï¿½ï¿½." };
 
     //public AudioClip audio;
 
@@ -73,7 +74,7 @@ public class QuizManager : MonoBehaviour
 
     public void makeQuestion()
     {
-
+        answer = an.GetComponent<Answer>();
         if (qna.Count > 0)
         {
             currentQuestion = Random.Range(0, qna.Count);
@@ -82,20 +83,18 @@ public class QuizManager : MonoBehaviour
         }
         else
         {
-           
-            if (ldslider.value > 30)
+            //an = an.GetComponent<Answer>();
+
+            if ((currentdegree) >= 50)
             {
-                Debug.Log("ÄÄÆ÷³ÍÆ®1ºÒ·¯¿È");
-                endGame.SetActive(true);
-                Endgame.text = endText[0];
-                //Debug.Log(endText[0]);
+                Invoke("WinGame", 2.5f);
+                Debug.Log(endText[0]);
             }
             else
             {
-                Debug.Log("ÄÄÆ÷³ÍÆ®2ºÒ·¯¿È");
-                endGame.SetActive(true);
-                //Debug.Log(endText[1]);
-                Endgame.text = endText[1];
+                Invoke("LoseGame", 2.5f);
+                Debug.Log(endText[1]);
+
                 //Endgame.text = endText[1];
             }
         }
@@ -151,7 +150,7 @@ public class QuizManager : MonoBehaviour
         //ChoiceWindowRun();
         //GetComponent<ChoiceWindowRun>().OnMouseDown();
 
-        Debug.Log("nextÇÔ¼öÈ£Ãâ");
+        Debug.Log("nextï¿½Ô¼ï¿½È£ï¿½ï¿½");
     }
 
     //public void ChoiceWindowRun()
@@ -167,5 +166,20 @@ public class QuizManager : MonoBehaviour
     public void Good()
     {
         good.SetActive(true);
+    }
+
+    public void WinGame()
+    {
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®1ï¿½Ò·ï¿½ï¿½ï¿½");
+        endGame.SetActive(true);
+        Endgame.text = endText[0];
+    }
+
+    public void LoseGame()
+    {
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®2ï¿½Ò·ï¿½ï¿½ï¿½");
+        endGame.SetActive(true);
+        //Debug.Log(endText[1]);
+        Endgame.text = endText[1];
     }
 }

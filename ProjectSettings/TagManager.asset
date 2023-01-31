@@ -20,6 +20,7 @@ TagManager:
   - diary
   - door_start
   - On
+  - NextScenepr
   layers:
   - Default
   - TransparentFX

@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneM : MonoBehaviour
 {
+    //public GameObject button;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,5 +20,10 @@ public class SceneM : MonoBehaviour
         {
             SceneManager.LoadScene("Score");
         }
+    }
+
+    public void ButtonClick()
+    {
+        SceneManager.LoadScene("Score");
     }
 }

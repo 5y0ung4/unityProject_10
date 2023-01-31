@@ -11,10 +11,15 @@ public class PlayerMove_pr : MonoBehaviour
     float gravity = -20f;
 
     float yVelocity = 0;
+
+    public GameObject BeforeGame3Dpr;
     
     // Start is called before the first frame update
     void Start()
     {
+        BeforeGame3Dpr.SetActive(false);
+        Invoke("beforegame3d", 0.01f);
+        Invoke("beforegameclose", 2.5f);
         cc = GetComponent<CharacterController>();
     }
 
@@ -36,4 +41,21 @@ public class PlayerMove_pr : MonoBehaviour
 
         cc.Move(dir*moveSpeed*Time.deltaTime);
     }
+
+    public void beforegame3d()
+    {
+        BeforeGame3Dpr.SetActive(true);
+    }
+
+    public void beforegameclose()
+    {
+        BeforeGame3Dpr.SetActive(false);
+    }
+    
+    //IEnumerator wait()
+    //{
+    //    yield return new WaitForSeconds(0.3f);
+
+    //    BeforeGame3Dpr.SetActive(false);
+    //}
 }
