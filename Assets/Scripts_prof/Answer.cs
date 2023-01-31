@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class Answer : MonoBehaviour
 {
-    public QuizManager quizmanager;
+    public GameObject qm;
+    QuizManager quizmanager;
     
     public bool isCorrect =false;
 
@@ -24,10 +25,10 @@ public class Answer : MonoBehaviour
     public GameObject bad;
 
     
-    public void badImage()
-    {
-        bad.SetActive(true);
-    }
+    //public void badImage()
+    //{
+    //    bad.SetActive(true);
+    //}
 
 
 
@@ -36,18 +37,24 @@ public class Answer : MonoBehaviour
 
     private void Start()
     {
-        //GetComponent<QuizManager>();
-       // GetComponent<QuizManager>().currentdegree = GetComponent<QuizManager>().mxlikedegree;
+       quizmanager = qm.GetComponent<QuizManager>();
+        if(!quizmanager)
+        {
+            Debug.Log("오브젝트 없음");
+        }
+       quizmanager.currentdegree = quizmanager.mxlikedegree;
        currentdegree = mxlikedegree;
     }
     public void answer()
     {
         if (isCorrect == true)
         {
-            Invoke("goodImage", 0.1f);
+            Invoke("goodImage", 0.01f);
+            Invoke("turnoffImagegood", 2f);
             IsInvoking("goodmage");
+            Debug.Log("인보크" + IsInvoking());
             
-            Debug.Log("인버크동작중");
+            //Debug.Log("인버크동작중");
             
             //good.SetActive(true);
             //GetComponent<QuizManager>().ChoiceWindowRun();
@@ -59,11 +66,13 @@ public class Answer : MonoBehaviour
         }
         else 
         {
+            Invoke("badImage", 0.01f);
+            Invoke("turnoffImagebad", 2f); 
             bad.SetActive(true);
-           // GetComponent<QuizManager>().currentdegree -= GetComponent<QuizManager>().likedegree;
-            currentdegree -= likedegree;
-            ldslider.value = (float)currentdegree / mxlikedegree;
-            //ldslider.value = (float)Getcomponent<QuizManager>().currentdegree / Getcomponent<QuizManager>().mxlikedegree;
+           quizmanager.currentdegree -= quizmanager.likedegree;
+            //currentdegree -= likedegree;
+            //ldslider.value = (float)currentdegree / mxlikedegree;
+            ldslider.value = (float)quizmanager.currentdegree / quizmanager.mxlikedegree;
 
 
             //changeImage_pr.GetComponent<ChangeImage_pr>().ChangeImage1();
@@ -97,5 +106,20 @@ public class Answer : MonoBehaviour
     public void goodImage()
     {
         good.SetActive(true);
+    }
+
+    public void badImage()
+    {
+        bad.SetActive(true);
+    }
+
+    public void turnoffImagegood()
+    {
+        good.SetActive(false);
+    }
+
+    public void turnoffImagebad()
+    {
+        bad.SetActive(false);
     }
 }

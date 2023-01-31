@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class QuizManager : MonoBehaviour
 {
-    public Answer answer;
+   // public Answer answer;
     public Slider ldslider;
 
     public List<QuestionAndAnswer> qna;
@@ -26,23 +26,24 @@ public class QuizManager : MonoBehaviour
 
     public GameObject bad;
 
-    //public int likedegree = 10;
+    public int likedegree = 10;
 
-    //public int mxlikedegree = 100;
+    public int mxlikedegree = 100;
 
-    //public int currentdegree;
+    public int currentdegree;
 
-    
+    public GameObject an;
+    Answer answer;
 
 
     public string[] endText = 
-        {"휴~ 무사히 상담을 마쳤다. " + System.Environment.NewLine +
+        {"게임 클리어!"+ System.Environment.NewLine + "휴~ 무사히 상담을 마쳤다. " + System.Environment.NewLine +
                "교수님 기분이 웬지 좋아보이시는걸? " + System.Environment.NewLine +
-               "기분좋게 강의실에 갈 수 있겠다.",
+               "기분좋게 강의실에 갈 수 있겠다." ,
 
-        "휴~ 무사히 상담을 마쳤다." + System.Environment.NewLine +
+        "게임 오버!" + System.Environment.NewLine + "휴~ 무사히 상담을 마쳤다." + System.Environment.NewLine +
                     "교수님 기분이 안 좋아지신 것 같은데.." + System.Environment.NewLine +
-                    "일단 수업을 들어야하니 강의실로 가자."};
+                    "일단 수업을 들어야하니 강의실로 가자." };
 
     //public AudioClip audio;
 
@@ -73,7 +74,7 @@ public class QuizManager : MonoBehaviour
 
     public void makeQuestion()
     {
-
+        answer = an.GetComponent<Answer>();
         if (qna.Count > 0)
         {
             currentQuestion = Random.Range(0, qna.Count);
@@ -82,20 +83,18 @@ public class QuizManager : MonoBehaviour
         }
         else
         {
-           
-            if (ldslider.value > 30)
+            //an = an.GetComponent<Answer>();
+
+            if ((currentdegree) >= 50)
             {
-                Debug.Log("컴포넌트1불러옴");
-                endGame.SetActive(true);
-                Endgame.text = endText[0];
-                //Debug.Log(endText[0]);
+                Invoke("WinGame", 2.5f);
+                Debug.Log(endText[0]);
             }
             else
             {
-                Debug.Log("컴포넌트2불러옴");
-                endGame.SetActive(true);
-                //Debug.Log(endText[1]);
-                Endgame.text = endText[1];
+                Invoke("LoseGame", 2.5f);
+                Debug.Log(endText[1]);
+
                 //Endgame.text = endText[1];
             }
         }
@@ -167,5 +166,20 @@ public class QuizManager : MonoBehaviour
     public void Good()
     {
         good.SetActive(true);
+    }
+
+    public void WinGame()
+    {
+        Debug.Log("컴포넌트1불러옴");
+        endGame.SetActive(true);
+        Endgame.text = endText[0];
+    }
+
+    public void LoseGame()
+    {
+        Debug.Log("컴포넌트2불러옴");
+        endGame.SetActive(true);
+        //Debug.Log(endText[1]);
+        Endgame.text = endText[1];
     }
 }
