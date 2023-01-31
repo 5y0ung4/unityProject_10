@@ -14,14 +14,14 @@ public class SSceneM : MonoBehaviour
     void Start()
     {
         num++;
-        /*sceneName = sceneNames[num];*/ //scene ÀÌ¸§ ¼öÁ¤
+        /*sceneName = sceneNames[num];*/ //scene ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½
         sceneName = "SceneNum" + num;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1)) // Å° ¼öÁ¤, ¼³¸í
+        if (Input.GetMouseButtonDown(1)) // Å° ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½
         {
             Destroy(GameObject.Find("ScObj").gameObject);
             SceneManager.LoadScene(sceneName);

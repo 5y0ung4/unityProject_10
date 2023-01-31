@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/profroomm.unity
+    path: Assets/Scenes/SceneNum2.unity
     guid: 75b3257d6c259624abdfc8e355885692
   - enabled: 1
     path: Assets/Scenes/profroom2D.unity
     guid: b85feaaba63a9d5469c67767192a9272
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/profroom2Dexplain.unity
     guid: b6f72d5859b57b048a63a33cd1a71cc8
   - enabled: 1
@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneNum5.unity
     guid: 75a670c77e8948c45966baf48895fd63
+  - enabled: 1
+    path: Assets/Scenes/SceneNum3.unity
+    guid: ac35c038469f52242a53e3a0b9a76651
   - enabled: 1
     path: Assets/Scenes/SceneNum0.unity
     guid: fde2aaea1799206419acd688e09de332
