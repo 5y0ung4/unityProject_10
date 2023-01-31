@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/Scenes/StartMenu.unity
     guid: 0474858f4e96f69448f0ad9cee12b84b
   - enabled: 1
-    path: Assets/Scenes/classroom.unity
+    path: Assets/Scenes/SceneNum1.unity
     guid: bea7f25a8ad33104e89ca90109077744
   - enabled: 1
     path: Assets/Scenes/SceneNum5.unity
