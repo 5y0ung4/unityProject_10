@@ -35,11 +35,11 @@ public class Sc2Obj : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ldslider.value > 30)
+        if (ldslider.value > 0.3)
         {
             score = 15;
         }
-        else if(ldslider.value <= 30)
+        else if(ldslider.value <= 0.3)
         {
             score = -15;
         }

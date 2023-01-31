@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ProfLikeBar : MonoBehaviour
 {
     //public static ProfLikeBar pl;
-    public int likedegree = 10;
+    public static int likedegree = 10;
 
     public int mxlikedegree = 100;
 
